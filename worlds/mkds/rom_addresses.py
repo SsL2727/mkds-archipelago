@@ -69,29 +69,14 @@ UNLOCK_BIT_LIGHTNING_CUP = 0x00001000            # bit 12 - individually confirm
 # now fully explained by the two real bits above.
 UNLOCK_BIT_MIRROR_MODE = 0x00010000              # bit 16 ALONE - confirmed by itself, no bit 15 needed
 UNLOCK_MASK_LIGHTNING_ALT_PATH = 0x00014000      # bits 14+16 together: a SECOND, unexplained path to Lightning Cup
-UNLOCK_MASK_DRY_BONES_GROUP = 0x001E0000         # bits 17-20: Dry Bones (+ correlated "all karts unlocked" side effect, cause unconfirmed)
-UNLOCK_BIT_DAISY = 0x00200000                    # bit 21 - individually confirmed
-UNLOCK_BIT_WALUIGI = 0x00400000                  # bit 22 - individually confirmed
-UNLOCK_BIT_ROB = 0x00800000                      # bit 23 - individually confirmed
-# Bits 24-26 unaccounted for - the Daisy/Waluigi/R.O.B. group turned out to fit entirely
-# in bits 21-23, so 24-26 are still unknown (unused/reserved, or something not yet found).
 
 UNLOCK_MASK_EVERYTHING = 0x07FFFFFF  # matches the known community "unlock everything" AR cheat
 
-# Item-name -> unlock-bit mappings for client.py's item-receiving logic. Only covers
-# individually-isolated bits/masks - see the honest gaps noted per entry.
-CHARACTER_UNLOCK_BITS = {
-    "Daisy": UNLOCK_BIT_DAISY,
-    "Waluigi": UNLOCK_BIT_WALUIGI,
-    "R.O.B.": UNLOCK_BIT_ROB,
-    # Dry Bones: only the 4-bit GROUP mask is known, not which single bit within it is
-    # really "Dry Bones" (the other 3 may be unused/reserved, or may not be). Using the
-    # whole group as a pragmatic stand-in - setting extra unused bits should be harmless,
-    # but this hasn't been proven safe by isolating them individually.
-    "Dry Bones": UNLOCK_MASK_DRY_BONES_GROUP,
-}
-# The 8 starter characters (Mario, Luigi, Peach, Yoshi, Toad, Donkey Kong, Wario, Bowser)
-# are always available and don't need an unlock bit at all.
+# NOTE: the four character-unlock bits this bisection work found (Daisy/Waluigi/R.O.B.
+# individually, Dry Bones via a 4-bit group) are no longer carried here - the trust-based
+# enforcement design (see client.py's module docstring) writes UNLOCK_MASK_EVERYTHING
+# unconditionally instead of incrementally OR-ing in per-item bits, so per-character bits
+# are no longer read by any code path. Full bisection history preserved in NOTES_ARCHIVE.md.
 
 CUP_UNLOCK_MASKS = {
     "Star Cup": UNLOCK_MASK_STAR_CUP_GROUP,
@@ -206,7 +191,18 @@ DRIVERSTATUS_OFFSET_LAP_TIMES = 0x8            # RaceTime[6], 0x18 bytes per-lap
 DRIVERSTATUS_OFFSET_TOTAL_TIME = 0x20          # RaceTime
 DRIVERSTATUS_OFFSET_CUR_LAP = 0x24             # u32 - VERIFIED (read back 1 while player was stuck on lap 1)
 DRIVERSTATUS_OFFSET_FIRST_PLACE_TIME = 0x28    # u32
-DRIVERSTATUS_OFFSET_TOTAL_TIME_MS = 0x2C       # u32
+DRIVERSTATUS_OFFSET_TOTAL_TIME_MS = 0x2C       # u32 - CONFIRMED LIVE, 2026-08-05: a plain
+# total-milliseconds count, no packed/RaceTime format at all (unlike TOTAL_TIME at 0x20,
+# still undecoded - not needed, this field already gives exactly what's needed). Verified
+# on TWO independent real Time Trial finishes, exact match both times: "1:54:042" on
+# screen -> raw bytes `7A BD 01 00` LE = 0x0001BD7A = 114042 = 1*60000+54*1000+42; and
+# (GCN Baby Park) "1:08:728" -> `78 0C 01 00` LE = 0x00010C78 = 68728 = 1*60000+8*1000+728.
+# The second sample also cross-checked internal_course_id (read 9, matches GCN Baby Park
+# in CONFIRMED_COURSE_IDS) and cup_idx (read 5, matches Banana Cup) at the same moment -
+# both correct, confirming this whole detection path is not the cause of a real-playtest
+# report that a Banana Cup race didn't send a check (investigating separately, see
+# NOTES.md - the data-reading mechanism itself is clean). See client.py's
+# _decode_finish_time.
 DRIVERSTATUS_OFFSET_FLAGS_AND_RESPAWN_ID = 0x30  # u32 - see DriverStatus_Flags bits below
 DRIVERSTATUS_OFFSET_HIGHEST_REACHED_LAP = 0x3A   # u16
 DRIVERSTATUS_OFFSET_CPOI_PROGRESS = 0x40       # fx32 (fixed-point) - progress around the current checkpoint
@@ -469,29 +465,96 @@ CUP_RESULT_SILVER = 1
 CUP_RESULT_BRONZE = 2
 CUP_RESULT_LOST = 3
 
+# --- Character/kart identity (mkds-re's CharacterId/KartId enums, confirmed data) ------
+# DESIGN CHANGE: rather than trying to suppress vanilla's always-available baseline
+# content (8 starters, base karts, 4 free cups - which an extensive ASM-patch
+# investigation failed to find a suppression point for, see NOTES_ARCHIVE.md), the world
+# now forces everything fully unlocked (UNLOCK_MASK_EVERYTHING, unconditionally - see
+# client.py) and instead gates CHECK-SENDING on whether the character/kart actually used
+# for a run were legitimately received as items. This needs a runtime character_id/kart_id
+# -> identity mapping, which these two tables provide.
+#
+# CharacterId (mkds-eu-types.h) - all 12 playable characters; CharacterId_Heyho_ShyGuy=12
+# is excluded (out of scope, never encountered in this project - see NOTES_ARCHIVE.md).
+CHARACTER_ID_TO_NAME = {
+    0: "Mario", 1: "Donkey Kong", 2: "Toad", 3: "Bowser",
+    4: "Peach", 5: "Wario", 6: "Yoshi", 7: "Luigi",
+    8: "Dry Bones", 9: "Daisy", 10: "Waluigi", 11: "R.O.B.",
+}
+# NOTE: there's no fixed "always legitimate" character set anymore (superseded the old
+# 8-starters-are-free STARTER_CHARACTERS constant) - all 12 are symmetric now, with one
+# randomly chosen as the seed's free starting character (see rules.py's
+# choose_character_unlock_order / __init__.py's fill_slot_data "character_unlock_order").
+
+# KartId (mkds-eu-types.h) - confirmed real enum, NOT guessed: karts are laid out in
+# blocks of 3 per character, IN THE SAME ORDER as CharacterId above (KartId_StandardMR=0,
+# ShootingStar=1, BDasher=2 for Mario; KartId_StandardDK=3,Wildlife=4,RambiRider=5 for DK;
+# ... through KartId_StandardRB=33,ROBBLS=34,ROBLGS=35 for R.O.B.; KartId_StandardHH=36
+# for the excluded 13th character has no siblings, consistent with it being unused).
+#
+# Display names cross-verified 2026-08-05 against TWO independent mariowiki.com pages -
+# the "Mario Kart DS karts" category listing (all 36 names) and a per-character kart
+# breakdown - both agree with each other AND with the enum's own grouping/order above,
+# name-for-name (same multi-source cross-check discipline as CONFIRMED_COURSE_IDS). Two
+# symbol-name quirks worth noting: KartId_LightTrippler's real in-game name is "Light
+# Tripper" (one fewer 'l' than the decompiled symbol), and KartId_ROBBLS/_ROBLGS render
+# with a hyphen in-game ("ROB-BLS"/"ROB-LGS").
+#
+# Supersedes the old is_standard_kart(character_id, kart_id) formula (removed) - that
+# only distinguished "standard tier or not" for what used to be a single collapsed
+# "Standard Kart" item. Now every kart is individually unlockable and individually named
+# (see items.py's KARTS / client.py's _is_run_legitimate), so client.py needs the
+# specific NAME for whichever kart_id was actually used, not just a boolean.
+KART_ID_TO_NAME = {
+    0: "Standard MR", 1: "Shooting Star", 2: "B Dasher",
+    3: "Standard DK", 4: "Wildlife", 5: "Rambi Rider",
+    6: "Standard TD", 7: "Mushmellow", 8: "4-Wheel Cradle",
+    9: "Standard BW", 10: "Hurricane", 11: "Tyrant",
+    12: "Standard PC", 13: "Light Tripper", 14: "Royale",
+    15: "Standard WR", 16: "Brute", 17: "Dragonfly",
+    18: "Standard YS", 19: "Egg 1", 20: "Cucumber",
+    21: "Standard LG", 22: "Poltergust 4000", 23: "Streamliner",
+    24: "Standard DB", 25: "Dry Bomber", 26: "Banisher",
+    27: "Standard DS", 28: "Light Dancer", 29: "Power Flower",
+    30: "Standard WL", 31: "Gold Mantis", 32: "Zipper",
+    33: "Standard RB", 34: "ROB-BLS", 35: "ROB-LGS",
+}
+
+# --- Time Trial staff ghost times (mariokart.fandom.com/wiki/Staff_Ghosts#Mario_Kart_DS,
+# fetched 2026-08-05) - per user direction, detection only needs to compare the player's
+# own finish time against these reference times, not read real staff-ghost replay data.
+# Stored as (minutes, seconds, milliseconds) exactly as the wiki lists them - matches
+# TRACKS_BY_CUP's 32 names exactly. NOT YET RESOLVED: the exact byte layout of
+# DriverStatus.total_time/total_time_ms (RaceTime - "internal format not decoded yet",
+# see RACESTATUS_OFFSET_LAP_TIMER/DRIVERSTATUS_OFFSET_TOTAL_TIME above) - these reference
+# times are solid, but comparing them against a live read needs that format confirmed
+# first (live BizHawk verification, not yet done).
+STAFF_GHOST_TIMES = {
+    "Figure-8 Circuit": (1, 36, 481), "Yoshi Falls": (0, 57, 677),
+    "Cheep Cheep Beach": (1, 43, 654), "Luigi's Mansion": (1, 59, 357),
+    "Desert Hills": (1, 31, 262), "Delfino Square": (1, 54, 601),
+    "Waluigi Pinball": (2, 23, 288), "Shroom Ridge": (2, 5, 123),
+    "DK Pass": (2, 14, 607), "Tick-Tock Clock": (1, 54, 903),
+    "Mario Circuit": (1, 56, 533), "Airship Fortress": (2, 7, 748),
+    "Wario Stadium": (2, 14, 868), "Peach Gardens": (1, 52, 989),
+    "Bowser's Castle": (2, 19, 661), "Rainbow Road": (2, 16, 246),
+    "SNES Mario Circuit 1": (0, 50, 688), "N64 Moo Moo Farm": (1, 17, 751),
+    "GBA Peach Circuit": (1, 12, 11), "GCN Luigi Circuit": (1, 29, 759),
+    "SNES Donut Plains 1": (1, 8, 27), "N64 Frappe Snowland": (2, 8, 781),
+    "GBA Bowser Castle 2": (1, 52, 258), "GCN Baby Park": (0, 50, 920),
+    "SNES Koopa Beach 2": (0, 54, 847), "N64 Choco Mountain": (2, 15, 571),
+    "GBA Luigi Circuit": (1, 46, 581), "GCN Mushroom Bridge": (1, 30, 600),
+    "SNES Choco Island 2": (1, 1, 620), "N64 Banshee Boardwalk": (2, 14, 403),
+    "GBA Sky Garden": (1, 44, 400), "GCN Yoshi Circuit": (1, 48, 793),
+}
+
 # --- Still unmapped / not yet address-verified for EU ----------------------------------
 # - g_GlobalB488 (0x0217B488, direct from mkds-re, not yet dereferenced/verified) - a
 #   secondary cross-check structure, not urgent given RaceConfigManager already works.
-# - Time-trial staff-ghost-beaten detection - not looked for yet, but RaceStatus's
-#   drivers[]/place_driver_ids fields likely apply equally to Time Trial mode (same
-#   struct), worth checking there directly rather than as a separate hunt.
+# - RaceTime's exact byte format - see STAFF_GHOST_TIMES above, blocks live Time Trial
+#   comparison specifically, nothing else.
 # - Live mission-run struct address (equivalent of g_GlobalMV but for an active mission
 #   attempt, if different from RaceStatus) - not searched for; RaceStatus's
 #   mission_result/mission_win_delay_counter/mission_lose_delay_counter fields, plus
 #   RaceConfig's mission_id/cur_mission_level/cur_mission_stage (now readable directly via
 #   RACECONFIGMANAGER_ADDRESS), likely cover this without needing a separate structure.
-# - Kart-item enforcement design (the "any character can use any unlocked kart" mode) has
-#   an open UX question, not just an address gap: vanilla's kart-select UI only ever shows
-#   the CURRENT character's own 3 karts (tier-gated, not per-kart-gated - see the
-#   ExtraKartUnlockState notes above). Forcing the global tier to TotalUnlock makes all 3
-#   of EVERY character's own karts freely browsable (cleanly solves "Yes only each
-#   character's unique karts" via the existing tier system - no further address hunting
-#   needed for that mode). True cross-character freedom ("Yes all") has no vanilla UI path
-#   at all - it needs either an ASM-level patch to the kart-select cursor/bounds logic
-#   (candidate function: CheckExtraKartUnlockFlagsWith, EU 0x02056DAC - now directly
-#   usable without USA porting) or a redesign around DRIVERCONFIG_OFFSET_KART_ID (write
-#   the player's actually-desired kart directly into RaceConfig.racer_entries[player_
-#   driver_id] right before the race starts). The latter still needs a UI for the player
-#   to EXPRESS which received kart they want, since vanilla's picker can't offer all 36.
-#   Not resolved - flagging as a real design fork worth revisiting rather than a pure
-#   lookup gap.

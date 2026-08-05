@@ -18,7 +18,8 @@
 
 from typing import NamedTuple, Optional
 from BaseClasses import ItemClassification
-from .locations import CUPS, TRACKS
+from . import rom_addresses
+from .locations import CUPS, TRACKS, MISSIONS
 
 base_id = 0xADF000  # verified against 49/~90 bundled worlds, see note above - not exhaustive
 
@@ -29,60 +30,64 @@ class ItemData(NamedTuple):
 
 
 # --- Characters (Useful, not gating) -----------------------------------------------
-# Only the 4 genuinely lockable characters - Mario/Luigi/Peach/Yoshi/Toad/Donkey Kong/
-# Wario/Bowser are always available in vanilla MKDS with no unlock bit gating them at
-# all (see rom_addresses.CHARACTER_UNLOCK_BITS), so an item for one of them would be
-# received but do nothing (there's no bit for _apply_received_items to write) - purely
-# wasted pool space, not something the AP economy can meaningfully represent. Previously
-# this list held all 12 (full roster, cross-checked against manual_mariokartds_
-# xanderoni's items.json) and fed straight into the item pool; real playtesting
-# (2026-08-04) surfaced the same "content that can't actually be locked shouldn't be in
-# the gated economy" issue already found for cups (see rules.py/NOTES.md) - fixed here
-# by only including what can genuinely be unlocked.
-CHARACTERS = ["Daisy", "Waluigi", "Dry Bones", "R.O.B."]
+# All 12 playable characters (rom_addresses.CHARACTER_ID_TO_NAME is the single source of
+# truth - kept there since client.py already needs it for character_id -> name
+# resolution, no reason to maintain a second hardcoded roster here that could drift).
+# One random character is free per seed (position 0 of rules.choose_character_unlock_
+# order - mirrors how cups/tracks/missions each have their own free position 0) - the
+# other 11 each get their own directly-named item, same pattern as cups/tracks/missions
+# below. Superseded design: this list used to hold only the 4 characters that had an
+# individually-isolated unlock bit in the OLD incremental-write scheme (the other 8 were
+# a fixed "always free" starter set) - that distinction no longer exists under trust-based
+# enforcement (see client.py's module docstring), since NO character needs a real unlock
+# bit anymore (the game is forced fully unlocked regardless) - "legitimate" is now purely
+# about which items were received, symmetric across all 12.
+CHARACTERS = list(rom_addresses.CHARACTER_ID_TO_NAME.values())
 
-# --- Karts (Useful, not gating) -----------------------------------------------------
-# Full 36-kart roster (3 per character), sourced from en.wikibooks.org/wiki/Mario_Kart_DS/Karts
-# (2026-08-04) and cross-checked for internal consistency (an earlier, messier search
-# result had a duplicated "Standard DS" name and gaps - not used).
+# --- Karts (Useful, not gating - mirrors Characters exactly) ------------------------
+# All 36 real karts (3 per character x 12 characters - rom_addresses.KART_ID_TO_NAME is
+# the single source of truth, wiki-cross-verified against the real mkds-re KartId enum,
+# same pattern as CHARACTERS above). One random kart is free per seed (position 0 of
+# rules.choose_kart_unlock_order - mirrors Characters' own free-by-name position 0
+# exactly, checked client-side only, see client.py's _is_run_legitimate) - the other 35
+# each get their own one-copy Useful item. Each kart item legitimizes exactly its own
+# kart_id, for whichever character used it (mkds-re confirms no engine-level character/
+# kart pairing restriction - see rom_addresses.py's CHARKARTCTX_OFFSET_KART_IDX note).
 #
-# DEFAULT VS UNLOCKABLE: only Mario's is empirically confirmed via direct gameplay
-# observation - his real starting karts are "B Dasher" and "Standard MR" (2 of his 3),
-# with "Shooting Star" as the unlockable one. The Wikibooks source's own per-character
-# "(default)" labels are NOT trusted for the other 11 characters - it explicitly says
-# "at the beginning there are only two karts available per racer" (matching what we
-# confirmed for Mario) "but doesn't explicitly distinguish which second kart is default
-# versus unlockable" for the rest. Treat KART_DEFAULTS below as confirmed for Mario only;
-# everyone else's split is a TODO.
+# Supersedes an earlier design that collapsed every character's standard-tier kart into
+# one shared "Standard Kart" item and left the other 24 (2 per character) with no item
+# at all - meaning 24 of 36 real karts could never legitimize a check no matter what, and
+# "Randomize Karts: Yes all" (per Instructions.txt) was never actually delivered. That
+# collapse existed to sidestep a UX problem from an earlier, since-abandoned design
+# (patching the game to restrict which of several received karts is "active" - see
+# NOTES.md) - moot under trust-based enforcement, since the game was never actually
+# restricting kart SELECTION in the first place.
 #
-# DESIGN NOTE: live testing suggests kart availability is not independently flag-gated
-# in vanilla MKDS at all (unlocking characters cascaded to "all karts unlocked" rather
-# than specific karts). Current plan is to randomize each character's *starting kart
-# assignment* directly (a RAM/ROM patch) rather than rely on a native per-kart unlock
-# flag - see rom_addresses.py's "still unmapped" section. This doesn't change the item
-# list itself, just how receiving a "Kart" item eventually gets applied in-game.
-KARTS_BY_CHARACTER = {
-    "Mario": ["Standard MR", "B Dasher", "Shooting Star"],
-    "Luigi": ["Standard LG", "Poltergust 4000", "Streamliner"],
-    "Peach": ["Standard PC", "Royale", "Light Tripper"],
-    "Yoshi": ["Standard YS", "Egg 1", "Cucumber"],
-    "Toad": ["Standard TD", "Mushmellow", "4-Wheel Cradle"],
-    "Donkey Kong": ["Standard DK", "Rambi Rider", "Wildlife"],
-    "Wario": ["Standard WR", "Brute", "Dragonfly"],
-    "Bowser": ["Standard BW", "Tyrant", "Hurricane"],
-    "Dry Bones": ["Standard DB", "Banisher", "Dry Bomber"],
-    "Daisy": ["Standard DS", "Power Flower", "Light Dancer"],
-    "Waluigi": ["Standard WL", "Gold Mantis", "Zipper"],
-    "R.O.B.": ["Standard RB", "ROB-BLS", "ROB-LGS"],
-}
-# Confirmed via direct gameplay (2026-08-04) - Mario only, see note above.
-CONFIRMED_DEFAULT_KARTS = {"Mario": ["Standard MR", "B Dasher"]}
+# CLASSIFICATION: useful, matching Instructions.txt directly (no deviation, unlike the
+# "Standard Kart" design this replaced). A REAL, SHIPPED BUG was found and fixed getting
+# here: an earlier version of THIS redesign made karts mandatory Progression items,
+# access-rule-gated via state.has_any(KARTS, player) (mirroring cups/tracks/missions).
+# That's fine when a category naturally provides multiple simultaneously-free locations
+# to bootstrap into (cups do, via their 4 associated tracks sharing one access rule) -
+# but for a THIN category (missions, time trials - exactly 1 location per required
+# instance), it created a real, provable fill deadlock: two DIFFERENT mandatory items (a
+# kart and the category's own position-1 item) both need the SAME single always-free
+# bootstrap location to be placed at, which is mathematically unsatisfiable (whichever
+# one doesn't fit ends up needing itself). This wasn't a new bug from expanding to 36
+# karts either - the OLD single "Standard Kart" item had the exact same shape and would
+# have hit the same deadlock for any missions_count/time_trials_count goal (count >= 2)
+# combined with Randomize Karts, just never exercised by a test. Reclassifying Karts as
+# Useful (this design) removes them from the access-rule graph entirely, eliminating the
+# deadlock at its root - see test/__init__.py's dedicated regression test for the exact
+# formerly-broken configuration.
+KARTS = list(rom_addresses.KART_ID_TO_NAME.values())
 
-KARTS = [kart for karts in KARTS_BY_CHARACTER.values() for kart in karts]
-
-# --- Cup / Time Trial unlock items (Progression) --------------------------------------
-# One item PER CUP and PER TRACK, named directly after what it unlocks - e.g. receiving
-# "Special Cup" unlocks Special Cup. Replaces an earlier design that used a single
+# --- Cup / Time Trial / Mission unlock items (Progression) ----------------------------
+# One item PER CUP, PER TRACK, and PER MISSION, named directly after what it unlocks -
+# e.g. receiving "Special Cup" unlocks Special Cup. Missions follow this exact pattern
+# too (added later than cups/tracks, same reasoning throughout this block applies
+# unchanged - one item per required mission, position 0 free). Replaces an earlier design
+# that used a single
 # generically-named "Progressive Cup" item, counted (Nth copy unlocks the Nth required
 # cup in generation-time order) - real playtesting (2026-08-04) found this confusing in
 # practice ("You received: Progressive Cup!" doesn't say WHICH cup). Switching to
@@ -101,12 +106,13 @@ KARTS = [kart for karts in KARTS_BY_CHARACTER.values() for kart in karts]
 # from the start), where the old design created one "spare" Progressive Cup copy per
 # seed that wasn't strictly needed for access.
 #
-# Cups and tracks (CUPS/TRACKS) live in locations.py - that's the authoritative source,
-# not duplicated here. Every one of the 8 cups and 32 tracks gets a static item table
-# entry (needed regardless of which ones end up goal-required in a given seed, same as
-# location_table covers every possible location up front) - create_items() only
-# actually creates/places the ones a specific seed's required_cups_in_order/
-# required_time_trials_in_order call for (skipping position 0 in each, per above).
+# Cups, tracks, and missions (CUPS/TRACKS/MISSIONS) live in locations.py - that's the
+# authoritative source, not duplicated here. Every one of the 8 cups, 32 tracks, and 63
+# missions gets a static item table entry (needed regardless of which ones end up
+# goal-required in a given seed, same as location_table covers every possible location up
+# front) - create_items() only actually creates/places the ones a specific seed's
+# required_cups_in_order/required_time_trials_in_order/required_missions_in_order call
+# for (skipping position 0 in each, per above).
 FILLER_ITEM_NAME = "Green Flag"
 
 
@@ -127,6 +133,10 @@ def build_item_table() -> dict[str, ItemData]:
         next_id += 1
 
     for name in TRACKS:
+        table[name] = ItemData(next_id, ItemClassification.progression)
+        next_id += 1
+
+    for name in MISSIONS:
         table[name] = ItemData(next_id, ItemClassification.progression)
         next_id += 1
 

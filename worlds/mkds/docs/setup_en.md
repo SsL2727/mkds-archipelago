@@ -75,36 +75,55 @@ checks to send and items to arrive, even in a single-player game.
 
 ## Playing the game
 
-Play Mario Kart DS as normal from a fresh save. Characters, Cups, and/or Karts (depending
-on your YAML options) start locked and unlock as the corresponding items arrive from the
-multiworld. Only cups/races/time trials/missions that are actually needed for your
-selected goal send checks - everything else behaves exactly like the unmodified game.
+Play Mario Kart DS as normal - **every character, kart, and cup is selectable from the
+start** (the client forces this the moment it connects, regardless of your starting
+save). This is intentional, not a bug: see "How enforcement works" below. Only
+cups/races/time trials/missions that are actually needed for your selected goal send
+checks - everything else behaves exactly like the unmodified game.
 
-**Current status**: this world is still under active development. Grand Prix (individual
-race wins and overall cup wins, goal completion) and Mission Mode clears are fully
-implemented and live-verified against real gameplay. Not yet working: Kart items are
-received but not applied in-game (no starting-kart randomization yet), Time Trial has
-locations defined but no in-game detection for actually beating a staff ghost, and Mission
-Mode's "3 Stars" rank isn't detected (only "Clear" is) - a seed whose goal depends on Time
-Trial or mission rank cannot currently be completed. Cup-based goals (the default) work
-end-to-end today.
+Your *starting* legitimate loadout - what will actually earn a check if you use it right
+away - is one random character, one random kart (any of the 36 real karts - not tied to
+the character, matching the base game), and (for whichever of Cups/Time Trial/Missions
+your YAML turns on) one starting cup, one starting Time Trial track, and one starting
+mission. Everything else in a given section needs its own item from the multiworld
+before races using it will earn checks - see "How enforcement works" for what happens if
+you use something you haven't earned yet.
 
-**Known limitation - vanilla baseline content is not suppressed.** Item checks/receives,
-required-location gating, and the goal itself all work correctly for the 9 things the game
-tracks with its own internal unlock flags (4 non-default cups, Mirror Mode, Dry Bones,
-Daisy, Waluigi, R.O.B.). However, Mario Kart DS treats its **8 starter characters, each
-character's first 2 karts, and 4 of the 8 cups as always available**, with no internal flag
-governing that access at all - there is nothing for this world to write to restrict it. In
-practice this means: from a fresh save, you can select any of the 8 starter characters,
-their starting karts, and play the 4 default-unlocked cups immediately, regardless of
-whether you've received the corresponding Archipelago items yet. This is a trust-based
-limitation, not a logic bug - the multiworld's item/location model is still fully correct
-(a seed cannot be completed without the right items in-logic), it's just not
-*enforced in-game* for this specific baseline content the way it is for everything else.
-Suppressing it would require a binary ASM patch to the ROM itself (rather than the RAM
-writes this world currently uses), which has been investigated at length but not yet
-achieved - see `NOTES.md` in the source repository for the full investigation if you want
-to pick it up.
+### How enforcement works
+
+Mario Kart DS has no internal flag governing its baseline content (the 8 starter
+characters, their default karts, and 4 of the 8 cups are always available in vanilla,
+with nothing for this world to restrict), and no way to patch that at the binary level
+has been found despite extensive investigation (see `NOTES_ARCHIVE.md` in the source
+repository). Rather than leave that content unenforced, this world takes a different
+approach: **everything is selectable, but a check only sends if the character and kart
+you actually raced with were legitimately received from the multiworld first.** If
+Randomize Karts is on, that applies per-kart, the same way it applies per-character: one
+random kart is free for the whole seed, and every other one of the 36 real karts needs
+its own item before races using it will earn a check - whichever kart you're actually
+driving when you win is the one that has to be legitimate, not a fixed universal item.
+
+In practice: nothing stops you from racing with an unearned character or kart, but doing
+so simply won't earn a check. There's no error or warning - the check just silently
+doesn't fire. This is the same trust-based model many Archipelago games use for content
+that can't be hard-restricted at the game level.
+
+### Current status
+
+Grand Prix (individual race wins and overall cup wins), Mission Mode clears, and goal
+completion are fully implemented and live-verified against real gameplay, including the
+underlying character/kart identity reads (which character_id/kart_id RaceConfig reports
+for the player's own race). Time Trial's finish-time decode (comparing your time against
+a reference time, rather than reading real ghost data) is also confirmed live.
+**Not yet live-verified** (implemented, but pending confirmation against real BizHawk
+gameplay): all 36 karts individually unlocking (as opposed to the single "Standard Kart"
+item this replaced, which WAS live-verified) - the kart_id-to-name mapping and the
+free-kart-by-name check are new and haven't been exercised against a real race yet, even
+though the underlying read they're built on has been. Also still open: the character/kart
+identity reads specifically for cup-win and mission-clear checks (as opposed to race
+wins), and Time Trial's own end-of-run detection heuristic specifically (Time Trial has
+no CPU racers, so it can't reuse the same "real race finish" signal Grand Prix does) -
+the rest of the Time Trial check (finish-time comparison itself) is solid.
 
 See this world's `rom_addresses.py`/`NOTES.md` in the source repository for full technical
 detail.

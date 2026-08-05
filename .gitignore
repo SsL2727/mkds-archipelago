@@ -9,8 +9,11 @@
 __pycache__/
 *.pyc
 
-# Built/packaged artifact - regenerate from worlds/mkds via the AP packaging tool
+# Built/packaged artifacts - regenerate from worlds/mkds / mkds-poptracker via their
+# respective packaging tools (AP's apworld packaging; mkds-poptracker/generate_pack.py
+# plus a zip of the resulting folder)
 mkds.apworld
+mkds-poptracker.zip
 
 # Vendored/external reference material - not this project's own work, re-fetch if needed:
 #   Archipelago itself:            https://github.com/ArchipelagoMW/Archipelago

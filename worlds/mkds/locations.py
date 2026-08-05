@@ -10,9 +10,10 @@
 # rom_addresses.py); mission objective text is now filled in too (see
 # MISSION_OBJECTIVES_BY_LEVEL below for sourcing/confidence notes - boss names are
 # cross-verified against two sources, the 56 non-boss objectives are single-sourced, same
-# confidence tier as the unconfirmed tracks). Cup names and the clear-vs-3-star check
-# split ARE confirmed (both against Instructions.txt and, for the clear/3-star split,
-# against mkds-re's StructMissionLevelStageInfo.beaten/.rank fields).
+# confidence tier as the unconfirmed tracks). Cup names ARE confirmed against
+# Instructions.txt. Missions only track "- Clear" (not "3 Stars" - dropped per user
+# direction, since rank detection was never implemented and mission checks now go
+# through the same character/kart validity gate as everything else - see rules.py).
 #
 # Every location below is only a real (item-granting) AP location if it's part of the
 # goal-required subset for the seed - see rules.py for how that subset gets chosen and
@@ -176,8 +177,6 @@ def build_location_table() -> dict[str, LocationData]:
 
     for mission in MISSIONS:
         table[f"{mission} - Clear"] = LocationData(next_id, "Mission Mode")
-        next_id += 1
-        table[f"{mission} - 3 Stars"] = LocationData(next_id, "Mission Mode")
         next_id += 1
 
     return table

@@ -1,0 +1,268 @@
+{
+  "layouts/characters": {
+    "type": "itemgrid",
+    "rows": [
+      [
+        "char_Mario",
+        "char_Donkey_Kong",
+        "char_Toad",
+        "char_Bowser"
+      ],
+      [
+        "char_Peach",
+        "char_Wario",
+        "char_Yoshi",
+        "char_Luigi"
+      ],
+      [
+        "char_Dry_Bones",
+        "char_Daisy",
+        "char_Waluigi",
+        "char_R_O_B_"
+      ]
+    ]
+  },
+  "layouts/karts": {
+    "type": "itemgrid",
+    "rows": [
+      [
+        "kart_Standard_MR",
+        "kart_Shooting_Star",
+        "kart_B_Dasher"
+      ],
+      [
+        "kart_Standard_DK",
+        "kart_Wildlife",
+        "kart_Rambi_Rider"
+      ],
+      [
+        "kart_Standard_TD",
+        "kart_Mushmellow",
+        "kart_4_Wheel_Cradle"
+      ],
+      [
+        "kart_Standard_BW",
+        "kart_Hurricane",
+        "kart_Tyrant"
+      ],
+      [
+        "kart_Standard_PC",
+        "kart_Light_Tripper",
+        "kart_Royale"
+      ],
+      [
+        "kart_Standard_WR",
+        "kart_Brute",
+        "kart_Dragonfly"
+      ],
+      [
+        "kart_Standard_YS",
+        "kart_Egg_1",
+        "kart_Cucumber"
+      ],
+      [
+        "kart_Standard_LG",
+        "kart_Poltergust_4000",
+        "kart_Streamliner"
+      ],
+      [
+        "kart_Standard_DB",
+        "kart_Dry_Bomber",
+        "kart_Banisher"
+      ],
+      [
+        "kart_Standard_DS",
+        "kart_Light_Dancer",
+        "kart_Power_Flower"
+      ],
+      [
+        "kart_Standard_WL",
+        "kart_Gold_Mantis",
+        "kart_Zipper"
+      ],
+      [
+        "kart_Standard_RB",
+        "kart_ROB_BLS",
+        "kart_ROB_LGS"
+      ]
+    ]
+  },
+  "layouts/cups": {
+    "type": "itemgrid",
+    "rows": [
+      [
+        "cup_Mushroom_Cup",
+        "cup_Flower_Cup",
+        "cup_Star_Cup",
+        "cup_Special_Cup"
+      ],
+      [
+        "cup_Shell_Cup",
+        "cup_Banana_Cup",
+        "cup_Leaf_Cup",
+        "cup_Lightning_Cup"
+      ]
+    ]
+  },
+  "layouts/time_trial": {
+    "type": "itemgrid",
+    "rows": [
+      [
+        "track_Figure_8_Circuit",
+        "track_Yoshi_Falls",
+        "track_Cheep_Cheep_Beach",
+        "track_Luigi_s_Mansion"
+      ],
+      [
+        "track_Desert_Hills",
+        "track_Delfino_Square",
+        "track_Waluigi_Pinball",
+        "track_Shroom_Ridge"
+      ],
+      [
+        "track_DK_Pass",
+        "track_Tick_Tock_Clock",
+        "track_Mario_Circuit",
+        "track_Airship_Fortress"
+      ],
+      [
+        "track_Wario_Stadium",
+        "track_Peach_Gardens",
+        "track_Bowser_s_Castle",
+        "track_Rainbow_Road"
+      ],
+      [
+        "track_SNES_Mario_Circuit_1",
+        "track_N64_Moo_Moo_Farm",
+        "track_GBA_Peach_Circuit",
+        "track_GCN_Luigi_Circuit"
+      ],
+      [
+        "track_SNES_Donut_Plains_1",
+        "track_N64_Frappe_Snowland",
+        "track_GBA_Bowser_Castle_2",
+        "track_GCN_Baby_Park"
+      ],
+      [
+        "track_SNES_Koopa_Beach_2",
+        "track_N64_Choco_Mountain",
+        "track_GBA_Luigi_Circuit",
+        "track_GCN_Mushroom_Bridge"
+      ],
+      [
+        "track_SNES_Choco_Island_2",
+        "track_N64_Banshee_Boardwalk",
+        "track_GBA_Sky_Garden",
+        "track_GCN_Yoshi_Circuit"
+      ]
+    ]
+  },
+  "layouts/missions": {
+    "type": "itemgrid",
+    "rows": [
+      [
+        "mission_L1M1",
+        "mission_L1M2",
+        "mission_L1M3",
+        "mission_L1M4",
+        "mission_L1M5",
+        "mission_L1M6",
+        "mission_L1M7",
+        "mission_L1M8",
+        "mission_L1M9"
+      ],
+      [
+        "mission_L2M1",
+        "mission_L2M2",
+        "mission_L2M3",
+        "mission_L2M4",
+        "mission_L2M5",
+        "mission_L2M6",
+        "mission_L2M7",
+        "mission_L2M8",
+        "mission_L2M9"
+      ],
+      [
+        "mission_L3M1",
+        "mission_L3M2",
+        "mission_L3M3",
+        "mission_L3M4",
+        "mission_L3M5",
+        "mission_L3M6",
+        "mission_L3M7",
+        "mission_L3M8",
+        "mission_L3M9"
+      ],
+      [
+        "mission_L4M1",
+        "mission_L4M2",
+        "mission_L4M3",
+        "mission_L4M4",
+        "mission_L4M5",
+        "mission_L4M6",
+        "mission_L4M7",
+        "mission_L4M8",
+        "mission_L4M9"
+      ],
+      [
+        "mission_L5M1",
+        "mission_L5M2",
+        "mission_L5M3",
+        "mission_L5M4",
+        "mission_L5M5",
+        "mission_L5M6",
+        "mission_L5M7",
+        "mission_L5M8",
+        "mission_L5M9"
+      ],
+      [
+        "mission_L6M1",
+        "mission_L6M2",
+        "mission_L6M3",
+        "mission_L6M4",
+        "mission_L6M5",
+        "mission_L6M6",
+        "mission_L6M7",
+        "mission_L6M8",
+        "mission_L6M9"
+      ],
+      [
+        "mission_L7M1",
+        "mission_L7M2",
+        "mission_L7M3",
+        "mission_L7M4",
+        "mission_L7M5",
+        "mission_L7M6",
+        "mission_L7M7",
+        "mission_L7M8",
+        "mission_L7M9"
+      ]
+    ]
+  },
+  "tracker_default": {
+    "type": "array",
+    "orientation": "vertical",
+    "content": [
+      {
+        "type": "layout",
+        "key": "layouts/characters"
+      },
+      {
+        "type": "layout",
+        "key": "layouts/karts"
+      },
+      {
+        "type": "layout",
+        "key": "layouts/cups"
+      },
+      {
+        "type": "layout",
+        "key": "layouts/time_trial"
+      },
+      {
+        "type": "layout",
+        "key": "layouts/missions"
+      }
+    ]
+  }
+}

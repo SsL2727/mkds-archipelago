@@ -1,0 +1,2185 @@
+[
+  {
+    "type": "toggle",
+    "name": "Mario",
+    "img": "images/character.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "char_Mario"
+  },
+  {
+    "type": "toggle",
+    "name": "Donkey Kong",
+    "img": "images/character.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "char_Donkey_Kong"
+  },
+  {
+    "type": "toggle",
+    "name": "Toad",
+    "img": "images/character.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "char_Toad"
+  },
+  {
+    "type": "toggle",
+    "name": "Bowser",
+    "img": "images/character.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "char_Bowser"
+  },
+  {
+    "type": "toggle",
+    "name": "Peach",
+    "img": "images/character.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "char_Peach"
+  },
+  {
+    "type": "toggle",
+    "name": "Wario",
+    "img": "images/character.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "char_Wario"
+  },
+  {
+    "type": "toggle",
+    "name": "Yoshi",
+    "img": "images/character.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "char_Yoshi"
+  },
+  {
+    "type": "toggle",
+    "name": "Luigi",
+    "img": "images/character.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "char_Luigi"
+  },
+  {
+    "type": "toggle",
+    "name": "Dry Bones",
+    "img": "images/character.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "char_Dry_Bones"
+  },
+  {
+    "type": "toggle",
+    "name": "Daisy",
+    "img": "images/character.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "char_Daisy"
+  },
+  {
+    "type": "toggle",
+    "name": "Waluigi",
+    "img": "images/character.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "char_Waluigi"
+  },
+  {
+    "type": "toggle",
+    "name": "R.O.B.",
+    "img": "images/character.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "char_R_O_B_"
+  },
+  {
+    "type": "toggle",
+    "name": "Standard MR",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Standard_MR"
+  },
+  {
+    "type": "toggle",
+    "name": "Shooting Star",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Shooting_Star"
+  },
+  {
+    "type": "toggle",
+    "name": "B Dasher",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_B_Dasher"
+  },
+  {
+    "type": "toggle",
+    "name": "Standard DK",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Standard_DK"
+  },
+  {
+    "type": "toggle",
+    "name": "Wildlife",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Wildlife"
+  },
+  {
+    "type": "toggle",
+    "name": "Rambi Rider",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Rambi_Rider"
+  },
+  {
+    "type": "toggle",
+    "name": "Standard TD",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Standard_TD"
+  },
+  {
+    "type": "toggle",
+    "name": "Mushmellow",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Mushmellow"
+  },
+  {
+    "type": "toggle",
+    "name": "4-Wheel Cradle",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_4_Wheel_Cradle"
+  },
+  {
+    "type": "toggle",
+    "name": "Standard BW",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Standard_BW"
+  },
+  {
+    "type": "toggle",
+    "name": "Hurricane",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Hurricane"
+  },
+  {
+    "type": "toggle",
+    "name": "Tyrant",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Tyrant"
+  },
+  {
+    "type": "toggle",
+    "name": "Standard PC",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Standard_PC"
+  },
+  {
+    "type": "toggle",
+    "name": "Light Tripper",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Light_Tripper"
+  },
+  {
+    "type": "toggle",
+    "name": "Royale",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Royale"
+  },
+  {
+    "type": "toggle",
+    "name": "Standard WR",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Standard_WR"
+  },
+  {
+    "type": "toggle",
+    "name": "Brute",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Brute"
+  },
+  {
+    "type": "toggle",
+    "name": "Dragonfly",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Dragonfly"
+  },
+  {
+    "type": "toggle",
+    "name": "Standard YS",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Standard_YS"
+  },
+  {
+    "type": "toggle",
+    "name": "Egg 1",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Egg_1"
+  },
+  {
+    "type": "toggle",
+    "name": "Cucumber",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Cucumber"
+  },
+  {
+    "type": "toggle",
+    "name": "Standard LG",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Standard_LG"
+  },
+  {
+    "type": "toggle",
+    "name": "Poltergust 4000",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Poltergust_4000"
+  },
+  {
+    "type": "toggle",
+    "name": "Streamliner",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Streamliner"
+  },
+  {
+    "type": "toggle",
+    "name": "Standard DB",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Standard_DB"
+  },
+  {
+    "type": "toggle",
+    "name": "Dry Bomber",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Dry_Bomber"
+  },
+  {
+    "type": "toggle",
+    "name": "Banisher",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Banisher"
+  },
+  {
+    "type": "toggle",
+    "name": "Standard DS",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Standard_DS"
+  },
+  {
+    "type": "toggle",
+    "name": "Light Dancer",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Light_Dancer"
+  },
+  {
+    "type": "toggle",
+    "name": "Power Flower",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Power_Flower"
+  },
+  {
+    "type": "toggle",
+    "name": "Standard WL",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Standard_WL"
+  },
+  {
+    "type": "toggle",
+    "name": "Gold Mantis",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Gold_Mantis"
+  },
+  {
+    "type": "toggle",
+    "name": "Zipper",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Zipper"
+  },
+  {
+    "type": "toggle",
+    "name": "Standard RB",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_Standard_RB"
+  },
+  {
+    "type": "toggle",
+    "name": "ROB-BLS",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_ROB_BLS"
+  },
+  {
+    "type": "toggle",
+    "name": "ROB-LGS",
+    "img": "images/kart.png",
+    "disabled_img_mods": [
+      "grey"
+    ],
+    "codes": "kart_ROB_LGS"
+  },
+  {
+    "type": "progressive",
+    "name": "Mushroom Cup",
+    "initial_stage_idx": 0,
+    "codes": "cup_Mushroom_Cup",
+    "stages": [
+      {
+        "img": "images/cup.png"
+      },
+      {
+        "img": "images/cup_green.png"
+      },
+      {
+        "img": "images/cup_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Flower Cup",
+    "initial_stage_idx": 0,
+    "codes": "cup_Flower_Cup",
+    "stages": [
+      {
+        "img": "images/cup.png"
+      },
+      {
+        "img": "images/cup_green.png"
+      },
+      {
+        "img": "images/cup_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Star Cup",
+    "initial_stage_idx": 0,
+    "codes": "cup_Star_Cup",
+    "stages": [
+      {
+        "img": "images/cup.png"
+      },
+      {
+        "img": "images/cup_green.png"
+      },
+      {
+        "img": "images/cup_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Special Cup",
+    "initial_stage_idx": 0,
+    "codes": "cup_Special_Cup",
+    "stages": [
+      {
+        "img": "images/cup.png"
+      },
+      {
+        "img": "images/cup_green.png"
+      },
+      {
+        "img": "images/cup_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Shell Cup",
+    "initial_stage_idx": 0,
+    "codes": "cup_Shell_Cup",
+    "stages": [
+      {
+        "img": "images/cup.png"
+      },
+      {
+        "img": "images/cup_green.png"
+      },
+      {
+        "img": "images/cup_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Banana Cup",
+    "initial_stage_idx": 0,
+    "codes": "cup_Banana_Cup",
+    "stages": [
+      {
+        "img": "images/cup.png"
+      },
+      {
+        "img": "images/cup_green.png"
+      },
+      {
+        "img": "images/cup_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Leaf Cup",
+    "initial_stage_idx": 0,
+    "codes": "cup_Leaf_Cup",
+    "stages": [
+      {
+        "img": "images/cup.png"
+      },
+      {
+        "img": "images/cup_green.png"
+      },
+      {
+        "img": "images/cup_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Lightning Cup",
+    "initial_stage_idx": 0,
+    "codes": "cup_Lightning_Cup",
+    "stages": [
+      {
+        "img": "images/cup.png"
+      },
+      {
+        "img": "images/cup_green.png"
+      },
+      {
+        "img": "images/cup_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Figure-8 Circuit",
+    "initial_stage_idx": 0,
+    "codes": "track_Figure_8_Circuit",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Yoshi Falls",
+    "initial_stage_idx": 0,
+    "codes": "track_Yoshi_Falls",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Cheep Cheep Beach",
+    "initial_stage_idx": 0,
+    "codes": "track_Cheep_Cheep_Beach",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Luigi's Mansion",
+    "initial_stage_idx": 0,
+    "codes": "track_Luigi_s_Mansion",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Desert Hills",
+    "initial_stage_idx": 0,
+    "codes": "track_Desert_Hills",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Delfino Square",
+    "initial_stage_idx": 0,
+    "codes": "track_Delfino_Square",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Waluigi Pinball",
+    "initial_stage_idx": 0,
+    "codes": "track_Waluigi_Pinball",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Shroom Ridge",
+    "initial_stage_idx": 0,
+    "codes": "track_Shroom_Ridge",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "DK Pass",
+    "initial_stage_idx": 0,
+    "codes": "track_DK_Pass",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Tick-Tock Clock",
+    "initial_stage_idx": 0,
+    "codes": "track_Tick_Tock_Clock",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Mario Circuit",
+    "initial_stage_idx": 0,
+    "codes": "track_Mario_Circuit",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Airship Fortress",
+    "initial_stage_idx": 0,
+    "codes": "track_Airship_Fortress",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Wario Stadium",
+    "initial_stage_idx": 0,
+    "codes": "track_Wario_Stadium",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Peach Gardens",
+    "initial_stage_idx": 0,
+    "codes": "track_Peach_Gardens",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Bowser's Castle",
+    "initial_stage_idx": 0,
+    "codes": "track_Bowser_s_Castle",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Rainbow Road",
+    "initial_stage_idx": 0,
+    "codes": "track_Rainbow_Road",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "SNES Mario Circuit 1",
+    "initial_stage_idx": 0,
+    "codes": "track_SNES_Mario_Circuit_1",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "N64 Moo Moo Farm",
+    "initial_stage_idx": 0,
+    "codes": "track_N64_Moo_Moo_Farm",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "GBA Peach Circuit",
+    "initial_stage_idx": 0,
+    "codes": "track_GBA_Peach_Circuit",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "GCN Luigi Circuit",
+    "initial_stage_idx": 0,
+    "codes": "track_GCN_Luigi_Circuit",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "SNES Donut Plains 1",
+    "initial_stage_idx": 0,
+    "codes": "track_SNES_Donut_Plains_1",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "N64 Frappe Snowland",
+    "initial_stage_idx": 0,
+    "codes": "track_N64_Frappe_Snowland",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "GBA Bowser Castle 2",
+    "initial_stage_idx": 0,
+    "codes": "track_GBA_Bowser_Castle_2",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "GCN Baby Park",
+    "initial_stage_idx": 0,
+    "codes": "track_GCN_Baby_Park",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "SNES Koopa Beach 2",
+    "initial_stage_idx": 0,
+    "codes": "track_SNES_Koopa_Beach_2",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "N64 Choco Mountain",
+    "initial_stage_idx": 0,
+    "codes": "track_N64_Choco_Mountain",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "GBA Luigi Circuit",
+    "initial_stage_idx": 0,
+    "codes": "track_GBA_Luigi_Circuit",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "GCN Mushroom Bridge",
+    "initial_stage_idx": 0,
+    "codes": "track_GCN_Mushroom_Bridge",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "SNES Choco Island 2",
+    "initial_stage_idx": 0,
+    "codes": "track_SNES_Choco_Island_2",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "N64 Banshee Boardwalk",
+    "initial_stage_idx": 0,
+    "codes": "track_N64_Banshee_Boardwalk",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "GBA Sky Garden",
+    "initial_stage_idx": 0,
+    "codes": "track_GBA_Sky_Garden",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "GCN Yoshi Circuit",
+    "initial_stage_idx": 0,
+    "codes": "track_GCN_Yoshi_Circuit",
+    "stages": [
+      {
+        "img": "images/track.png"
+      },
+      {
+        "img": "images/track_green.png"
+      },
+      {
+        "img": "images/track_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 1 Mission 1 - Drive through 5 numbered gates in order",
+    "initial_stage_idx": 0,
+    "codes": "mission_L1M1",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 1 Mission 2 - Collect all 15 coins",
+    "initial_stage_idx": 0,
+    "codes": "mission_L1M2",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 1 Mission 3 - Destroy all 10 item boxes",
+    "initial_stage_idx": 0,
+    "codes": "mission_L1M3",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 1 Mission 4 - Get the Star and use it to hit 5 Cheep Cheeps",
+    "initial_stage_idx": 0,
+    "codes": "mission_L1M4",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 1 Mission 5 - Drive through 6 numbered gates in order",
+    "initial_stage_idx": 0,
+    "codes": "mission_L1M5",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 1 Mission 6 - Drive out of the mansion, backward",
+    "initial_stage_idx": 0,
+    "codes": "mission_L1M6",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 1 Mission 7 - Collect all 20 coins",
+    "initial_stage_idx": 0,
+    "codes": "mission_L1M7",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 1 Mission 8 - Perform 4 power-slide turbo boosts in 1 lap",
+    "initial_stage_idx": 0,
+    "codes": "mission_L1M8",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 1 Mission 9 - Boss - Big Bully",
+    "initial_stage_idx": 0,
+    "codes": "mission_L1M9",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 2 Mission 1 - Crash into and destroy all 10 wooden crates",
+    "initial_stage_idx": 0,
+    "codes": "mission_L2M1",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 2 Mission 2 - Collect all 10 coins",
+    "initial_stage_idx": 0,
+    "codes": "mission_L2M2",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 2 Mission 3 - Drive through 5 numbered gates in order",
+    "initial_stage_idx": 0,
+    "codes": "mission_L2M3",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 2 Mission 4 - Destroy all 5 item boxes",
+    "initial_stage_idx": 0,
+    "codes": "mission_L2M4",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 2 Mission 5 - Collect all 20 coins",
+    "initial_stage_idx": 0,
+    "codes": "mission_L2M5",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 2 Mission 6 - Use Bob-ombs to destroy all 5 Pokeys",
+    "initial_stage_idx": 0,
+    "codes": "mission_L2M6",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 2 Mission 7 - Drive through 10 numbered gates in order",
+    "initial_stage_idx": 0,
+    "codes": "mission_L2M7",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 2 Mission 8 - Perform 6 power-slide turbo boosts in 3 laps",
+    "initial_stage_idx": 0,
+    "codes": "mission_L2M8",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 2 Mission 9 - Boss - Eyerok",
+    "initial_stage_idx": 0,
+    "codes": "mission_L2M9",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 3 Mission 1 - Destroy all 5 item boxes",
+    "initial_stage_idx": 0,
+    "codes": "mission_L3M1",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 3 Mission 2 - Drive through 5 numbered gates in order, backward",
+    "initial_stage_idx": 0,
+    "codes": "mission_L3M2",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 3 Mission 3 - Collect 15 coins while avoiding the Chain Chomp",
+    "initial_stage_idx": 0,
+    "codes": "mission_L3M3",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 3 Mission 4 - Reach the finish before Yoshi",
+    "initial_stage_idx": 0,
+    "codes": "mission_L3M4",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 3 Mission 5 - Drive through numbered gates in order",
+    "initial_stage_idx": 0,
+    "codes": "mission_L3M5",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 3 Mission 6 - Hit Monty Moles with shells 5 times",
+    "initial_stage_idx": 0,
+    "codes": "mission_L3M6",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 3 Mission 7 - Perform 10 power-slide turbo boosts in 1 lap",
+    "initial_stage_idx": 0,
+    "codes": "mission_L3M7",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 3 Mission 8 - Collect all 20 coins",
+    "initial_stage_idx": 0,
+    "codes": "mission_L3M8",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 3 Mission 9 - Boss - Goomboss",
+    "initial_stage_idx": 0,
+    "codes": "mission_L3M9",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 4 Mission 1 - Reach the finish before Donkey Kong",
+    "initial_stage_idx": 0,
+    "codes": "mission_L4M1",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 4 Mission 2 - Blast 20 crabs",
+    "initial_stage_idx": 0,
+    "codes": "mission_L4M2",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 4 Mission 3 - Reach the finish before the red car",
+    "initial_stage_idx": 0,
+    "codes": "mission_L4M3",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 4 Mission 4 - Drive through 7 numbered gates in order",
+    "initial_stage_idx": 0,
+    "codes": "mission_L4M4",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 4 Mission 5 - Collect 15 coins without being squished by a Thwomp",
+    "initial_stage_idx": 0,
+    "codes": "mission_L4M5",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 4 Mission 6 - Break 10 item boxes while avoiding the Fake Items",
+    "initial_stage_idx": 0,
+    "codes": "mission_L4M6",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 4 Mission 7 - Drive through 10 gates",
+    "initial_stage_idx": 0,
+    "codes": "mission_L4M7",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 4 Mission 8 - Perform 9 power-slide turbo boosts in 1 lap",
+    "initial_stage_idx": 0,
+    "codes": "mission_L4M8",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 4 Mission 9 - Boss - King Boo",
+    "initial_stage_idx": 0,
+    "codes": "mission_L4M9",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 5 Mission 1 - Reach the finish before the stray Chain Chomp",
+    "initial_stage_idx": 0,
+    "codes": "mission_L5M1",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 5 Mission 2 - Drive backward and collect 15 coins without hitting a snowman",
+    "initial_stage_idx": 0,
+    "codes": "mission_L5M2",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 5 Mission 3 - Destroy all 5 item boxes",
+    "initial_stage_idx": 0,
+    "codes": "mission_L5M3",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 5 Mission 4 - Drive through 10 numbered gates in order",
+    "initial_stage_idx": 0,
+    "codes": "mission_L5M4",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 5 Mission 5 - Complete 1 lap in the opposite direction within the time limit",
+    "initial_stage_idx": 0,
+    "codes": "mission_L5M5",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 5 Mission 6 - Collect all 18 coins",
+    "initial_stage_idx": 0,
+    "codes": "mission_L5M6",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 5 Mission 7 - Drive through 8 numbered gates in order",
+    "initial_stage_idx": 0,
+    "codes": "mission_L5M7",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 5 Mission 8 - Reach the finish before Mario",
+    "initial_stage_idx": 0,
+    "codes": "mission_L5M8",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 5 Mission 9 - Boss - Big Bob-omb",
+    "initial_stage_idx": 0,
+    "codes": "mission_L5M9",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 6 Mission 1 - Drive backward across the spinning bridge without falling",
+    "initial_stage_idx": 0,
+    "codes": "mission_L6M1",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 6 Mission 2 - Get Stars and run over 15 Rocky Wrenches",
+    "initial_stage_idx": 0,
+    "codes": "mission_L6M2",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 6 Mission 3 - Collect all 20 coins",
+    "initial_stage_idx": 0,
+    "codes": "mission_L6M3",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 6 Mission 4 - Destroy all 10 item boxes",
+    "initial_stage_idx": 0,
+    "codes": "mission_L6M4",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 6 Mission 5 - Drive through 8 numbered gates in order",
+    "initial_stage_idx": 0,
+    "codes": "mission_L6M5",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 6 Mission 6 - Perform 14 power-slide turbo boosts in 1 lap",
+    "initial_stage_idx": 0,
+    "codes": "mission_L6M6",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 6 Mission 7 - Collect all 40 coins",
+    "initial_stage_idx": 0,
+    "codes": "mission_L6M7",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 6 Mission 8 - Reach the finish before Peach",
+    "initial_stage_idx": 0,
+    "codes": "mission_L6M8",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 6 Mission 9 - Boss - Chief Chilly",
+    "initial_stage_idx": 0,
+    "codes": "mission_L6M9",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 7 Mission 1 - Perform 6 power-slide turbo boosts in 1 lap",
+    "initial_stage_idx": 0,
+    "codes": "mission_L7M1",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 7 Mission 2 - Reach the finish before Bowser",
+    "initial_stage_idx": 0,
+    "codes": "mission_L7M2",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 7 Mission 3 - Complete 2 laps within the time limit",
+    "initial_stage_idx": 0,
+    "codes": "mission_L7M3",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 7 Mission 4 - Use shells to defeat all 30 Goombas within the time limit",
+    "initial_stage_idx": 0,
+    "codes": "mission_L7M4",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 7 Mission 5 - Collect all 20 coins",
+    "initial_stage_idx": 0,
+    "codes": "mission_L7M5",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 7 Mission 6 - Drive through 8 numbered gates in order",
+    "initial_stage_idx": 0,
+    "codes": "mission_L7M6",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 7 Mission 7 - Drive backward and collect all 12 coins without hitting a burner",
+    "initial_stage_idx": 0,
+    "codes": "mission_L7M7",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 7 Mission 8 - Break all 10 item boxes while avoiding the Fake Items",
+    "initial_stage_idx": 0,
+    "codes": "mission_L7M8",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  },
+  {
+    "type": "progressive",
+    "name": "Level 7 Mission 9 - Boss - Wiggler",
+    "initial_stage_idx": 0,
+    "codes": "mission_L7M9",
+    "stages": [
+      {
+        "img": "images/mission.png"
+      },
+      {
+        "img": "images/mission_green.png"
+      },
+      {
+        "img": "images/mission_grey.png"
+      }
+    ]
+  }
+]

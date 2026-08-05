@@ -17,22 +17,16 @@ class RandomizeTimeTrial(Toggle):
     display_name = "Randomize Time Trial"
 
 
-class RandomizeMissionMode(Choice):
-    """How Mission Mode's missions are shuffled across level slots.
+class RandomizeMissionMode(Toggle):
+    """Whether Mission Mode is part of the randomizer.
 
-    off: Mission Mode is entirely vanilla - no items, no checks tied to it.
-    all: every mission (including boss missions) is shuffled into one pool across all slots.
-    non_boss_only: boss missions stay in their vanilla slots untouched. Only non-boss
-        missions shuffle among non-boss slots.
-    non_boss_and_boss_separately: non-boss missions shuffle among non-boss slots, and
-        boss missions separately shuffle among boss slots, but the two groups never mix.
+    Off: Mission Mode is entirely vanilla - no items, no checks tied to it.
+    On: missions send "- Clear" checks (when goal-required) and can be used for
+    missions_count/combination goals. Missions always occupy their vanilla level slot -
+    this option no longer shuffles which mission is where, only whether Mission Mode
+    participates in the AP economy at all.
     """
     display_name = "Randomize Mission Mode"
-    option_off = 0
-    option_all = 1
-    option_non_boss_only = 2
-    option_non_boss_and_boss_separately = 3
-    default = 0
 
 
 class RandomizeCharacters(Toggle):
@@ -45,44 +39,18 @@ class RandomizeCharacters(Toggle):
     display_name = "Randomize Characters"
 
 
-class RandomizeKarts(Choice):
-    """Whether karts are part of the randomizer, and whether kart choice stays tied to
-    the character that originally owns it. Any character can drive any kart in the base
-    game (no engine restriction) - "yes_unique_only" is a restriction this randomizer
-    imposes on purpose, not a limitation of MKDS itself.
+class RandomizeKarts(Toggle):
+    """Whether karts are part of the randomizer. All 36 real karts (see items.py) work
+    for any character (matches the base game: nothing ties a kart to one character).
 
-    off: karts are entirely vanilla - no items, no checks tied to them.
-    yes_all: all karts in the game are pooled together regardless of original character.
-        Any character can drive any kart once it's unlocked.
-    yes_unique_only: each character's own karts stay grouped with that character. Only
-        that character can drive their own unlocked karts.
-
-    Requires Randomize Cups to be active. (Cups has no fully-vanilla state in this
-    design, so that dependency is always satisfied today.)
+    Off: all karts are available as in the base game - no kart items in the pool, no
+    checks tied to them.
+    On: one random kart is free per seed; every other kart unlocks individually as a
+    Useful item received from the multiworld, and the SPECIFIC kart you actually drive
+    for a run must have been legitimately received (your free one, or one you found) for
+    that run's check to send - see rules.py/client.py.
     """
     display_name = "Randomize Karts"
-    option_off = 0
-    option_yes_all = 1
-    option_yes_unique_only = 2
-    default = 0
-
-
-class RandomizeCups(Choice):
-    """How tracks are assigned to cups. Cup unlock order is always randomized regardless
-    of this setting - there is no fully-vanilla option for Cups.
-
-    unrandomized: cup-to-track assignment stays vanilla (each cup keeps its original 4
-        tracks); only which cup you unlock and the order you unlock them in are randomized.
-    tracks_random_no_overlap: any track can be in any cup, but each of the 32 tracks is
-        used exactly once across the 8 cups.
-    tracks_random_with_overlap: any track can be in any cup, and a track may appear more
-        than once across the 32 race slots (so some tracks may not appear at all).
-    """
-    display_name = "Randomize Cups"
-    option_unrandomized = 0
-    option_tracks_random_no_overlap = 1
-    option_tracks_random_with_overlap = 2
-    default = 0
 
 
 class Goal(Choice):
@@ -146,25 +114,19 @@ class MKDSOptions(PerGameCommonOptions):
     randomize_mission_mode: RandomizeMissionMode
     randomize_characters: RandomizeCharacters
     randomize_karts: RandomizeKarts
-    randomize_cups: RandomizeCups
     goal: Goal
     required_cup_count: RequiredCupCount
     required_time_trial_count: RequiredTimeTrialCount
     required_mission_count: RequiredMissionCount
 
     def validate(self) -> None:
-        # Characters/Karts randomization requires Cup randomization to be active, per
-        # Instructions.txt. Cups has no fully-off state in this design, so this
-        # dependency can't currently be violated - documented here as an explicit
-        # invariant in case Cups ever gains an off-state.
-
         if self.goal == Goal.option_missions_count:
-            if self.randomize_mission_mode.value == RandomizeMissionMode.option_off:
+            if not self.randomize_mission_mode:
                 raise OptionError("Goal 'missions_count' requires Randomize Mission Mode to not be off.")
             if self.required_mission_count.value < 1:
                 raise OptionError("Goal 'missions_count' requires required_mission_count of at least 1.")
 
-        if self.goal == Goal.option_mission_mode_complete and self.randomize_mission_mode.value == RandomizeMissionMode.option_off:
+        if self.goal == Goal.option_mission_mode_complete and not self.randomize_mission_mode:
             raise OptionError("Goal 'mission_mode_complete' requires Randomize Mission Mode to not be off.")
 
         if self.goal == Goal.option_cups_count and self.required_cup_count.value < 1:
@@ -184,5 +146,5 @@ class MKDSOptions(PerGameCommonOptions):
         if self.required_time_trial_count.value and not self.randomize_time_trial:
             raise OptionError("required_time_trial_count is set but Randomize Time Trial is off.")
 
-        if self.required_mission_count.value and self.randomize_mission_mode.value == RandomizeMissionMode.option_off:
+        if self.required_mission_count.value and not self.randomize_mission_mode:
             raise OptionError("required_mission_count is set but Randomize Mission Mode is off.")

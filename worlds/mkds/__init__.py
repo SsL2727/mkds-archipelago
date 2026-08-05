@@ -7,9 +7,9 @@ from BaseClasses import Item, Tutorial
 from worlds.AutoWorld import WebWorld, World
 
 from .client import MKDSClient  # noqa: F401  (imported for its registration side effect - see client.py)
-from .items import item_table, CHARACTERS, KARTS, FILLER_ITEM_NAME
+from .items import item_table, FILLER_ITEM_NAME
 from .locations import location_table
-from .options import MKDSOptions, RandomizeKarts
+from .options import MKDSOptions
 from .regions import create_regions
 from .rules import decide_goal_requirements, set_rules
 
@@ -46,8 +46,10 @@ class MKDSWorld(World):
     required_locations: set  # populated by decide_goal_requirements() in generate_early
     required_cups_in_order: list  # ditto
     required_time_trials_in_order: list  # ditto
-    required_missions: list  # ditto
+    required_missions_in_order: list  # ditto
     required_race_tracks: set  # ditto
+    character_unlock_order: list  # ditto
+    kart_unlock_order: list  # ditto
 
     def generate_early(self) -> None:
         self.options.validate()
@@ -64,47 +66,60 @@ class MKDSWorld(World):
         return MKDSItem(name, data.classification, data.code, self.player)
 
     def create_items(self) -> None:
-        # Real (non-filler) item pool per Instructions.txt: Characters/Karts (if their
-        # Randomize options are on) as one-copy-each Useful items, plus one item PER
-        # goal-required cup/track, named directly after it (e.g. receiving "Special Cup"
-        # unlocks Special Cup) - see items.py's header comment for why this replaced an
-        # earlier generic counted "Progressive Cup" design (real playtesting, 2026-08-04:
-        # players had no way to tell which cup a received item corresponded to). The
-        # FIRST required cup and FIRST required track need no item at all (rules.py gives
-        # them an unconditional access rule - they're the bootstrap entry point into
-        # their respective chains, matching "you always have somewhere to start"), so
-        # `[1:]` is intentional, not an off-by-one bug.
+        # Real (non-filler) item pool per Instructions.txt, since redesigned around
+        # trust-based check enforcement (see rules.py's module docstring/NOTES.md): one
+        # item PER goal-required cup/track/mission, named directly after it (e.g.
+        # receiving "Special Cup" unlocks Special Cup) - see items.py's header comment
+        # for why this replaced an earlier generic counted "Progressive Cup" design. The
+        # FIRST required cup, FIRST required track, and FIRST required mission each need
+        # no item at all (rules.py gives them an unconditional access rule - they're the
+        # bootstrap entry point into their respective chains, matching "you always have
+        # somewhere to start"), so `[1:]` below is intentional, not an off-by-one bug.
         #
-        # Missions are locations, not items, so they don't belong in this pool at all
-        # (see items.py header comment, and rules.py's module docstring) - not an
-        # oversight.
-        #
-        # Cup/track unlock items are PROGRESSION items - every one is required for
-        # logical completion (rules.py's access rules and completion_condition depend on
-        # having received them), so they always go in whole. Characters/Karts are only
-        # "Useful" (see items.py) - not required for completion - so if the pool would
-        # overflow the goal-required location count, THESE are what gets trimmed, not the
-        # progression items. Instructions.txt's own assumption was "pool overflow is not
-        # expected to occur", but real generation testing (2026-08-04) proved it does for
-        # smaller goals combined with both Randomize Characters and Randomize Karts on
-        # (e.g. combination goal, required_cup_count=3: only ~31 locations exist, but
-        # Characters(4)+Karts(36)=40 alone already exceeds that) - this handles it rather
-        # than leaving generation to hard-fail on an unplaceable pool.
+        # Cup/track/mission items are PROGRESSION and unconditionally mandatory - every
+        # one is required for logical completion (rules.py's access rules and
+        # completion_condition depend on having received them all) - this is the real
+        # floor `location_count` below must accommodate.
         progression_pool: list[MKDSItem] = []
         progression_pool.extend(self.create_item(cup) for cup in self.required_cups_in_order[1:])
         progression_pool.extend(self.create_item(track) for track in self.required_time_trials_in_order[1:])
-
-        bonus_names: list[str] = []
-        if self.options.randomize_characters:
-            bonus_names.extend(CHARACTERS)
-        if self.options.randomize_karts.value != RandomizeKarts.option_off:
-            bonus_names.extend(KARTS)
+        progression_pool.extend(self.create_item(mission) for mission in self.required_missions_in_order[1:])
 
         location_count = len(self.required_locations)
+
+        # Characters and Karts, if their Randomize options are on - one random one of
+        # each is likewise free per seed (character_unlock_order[0]/kart_unlock_order[0],
+        # checked by name only in client.py - mirrors the cup/track/mission pattern above
+        # but WITHOUT an item, since neither gates any location's reachability - see
+        # rules.py's module docstring), the rest as one-copy-each Useful items. Both
+        # share ONE combined bonus pool/capacity computation (rather than two separate
+        # ones) so trimming - if the pool would otherwise overflow - draws fairly from
+        # both categories instead of always favoring whichever is computed first.
+        #
+        # Real bug found and fixed while building this: an earlier version made Karts
+        # mandatory Progression items (rules.py access-rule-gated via
+        # state.has_any(KARTS, player), mirroring cups/tracks/missions) sized to fit
+        # available capacity. That avoided pool OVERFLOW but not a deeper problem - for a
+        # THIN category (missions/time trials, exactly 1 location per required instance),
+        # it created a real, provable fill DEADLOCK: two different mandatory items (a
+        # kart and the category's own next item) both needing the SAME single always-free
+        # bootstrap location is mathematically unsatisfiable, regardless of fill order.
+        # Reclassifying Karts as Useful (items.py) and giving one a free identity by name
+        # (rules.choose_kart_unlock_order, exactly like Characters) removes them from the
+        # access-rule graph entirely, which removes the deadlock at its root - see
+        # test/__init__.py's dedicated regression test for the exact formerly-broken
+        # configuration.
+        bonus_names: list[str] = []
+        if self.options.randomize_characters:
+            bonus_names.extend(self.character_unlock_order[1:])
+        if self.options.randomize_karts:
+            bonus_names.extend(self.kart_unlock_order[1:])
+
         bonus_capacity = max(0, location_count - len(progression_pool))
         if len(bonus_names) > bonus_capacity:
             # Not enough room for every Character/Kart - keep a random subset rather than
-            # always dropping the same ones (e.g. always the last N alphabetically).
+            # always dropping the same ones (e.g. always the last N alphabetically, or
+            # always favoring one category over the other).
             bonus_names = self.random.sample(bonus_names, bonus_capacity)
         bonus_pool = [self.create_item(name) for name in bonus_names]
 
@@ -119,13 +134,23 @@ class MKDSWorld(World):
 
     def fill_slot_data(self) -> dict:
         # client.py needs the generation-time unlock order itself (decided per-seed in
-        # generate_early - see rules.choose_goal_required_cups/_time_trials) since each
-        # cup/track's unlock item is named directly after it, and which cups/tracks/
-        # missions aren't part of the AP economy at all (goal-scoping - those should be
-        # left to vanilla progression, not touched by the client).
+        # generate_early - see rules.choose_goal_required_cups/_time_trials/_missions)
+        # since each cup/track/mission's unlock item is named directly after it, and
+        # which cups/tracks/missions aren't part of the AP economy at all (goal-scoping -
+        # those should be left to vanilla progression, not touched by the client).
+        #
+        # character_unlock_order/kart_unlock_order: same idea, but for Characters/Karts
+        # specifically - neither is goal-scoped (see rules.choose_character_unlock_order/
+        # choose_kart_unlock_order), just the per-seed randomized order client.py's
+        # _is_run_legitimate needs to know which one ([0]) is this seed's free starting
+        # character/kart. Empty when the corresponding Randomize option is off, which
+        # client.py treats as "this category isn't part of the economy at all" - same
+        # on/off-switch pattern for both.
         return {
             "required_cups_in_order": self.required_cups_in_order,
             "required_time_trials_in_order": self.required_time_trials_in_order,
-            "required_missions": self.required_missions,
+            "required_missions_in_order": self.required_missions_in_order,
             "required_race_tracks": sorted(self.required_race_tracks),
+            "character_unlock_order": self.character_unlock_order,
+            "kart_unlock_order": self.kart_unlock_order,
         }

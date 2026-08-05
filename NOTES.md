@@ -5,8 +5,7 @@ we know" behind `rom_addresses.py` and the rest of `worlds/mkds/`. `Instructions
 the design spec; `rom_addresses.py` is the authoritative source for every confirmed
 address/offset (each entry there carries its own confidence level and verification method
 in its comment). This file covers what those two don't: architecture context, design
-decisions worth remembering, methodology traps to avoid repeating, and the current state of
-the unresolved ASM-patch investigation.
+decisions worth remembering, and methodology traps to avoid repeating.
 
 This is a condensed, actively-maintained reference, not a session log - superseded findings
 and resolved incidents have been cut. For the full chronological development history
@@ -60,9 +59,11 @@ and resolved incidents have been cut. For the full chronological development his
 
 ## Design decisions worth remembering
 
-**Item naming (cups/tracks)**: each required cup and time-trial track gets its own
-individually-named item (e.g. "Mushroom Cup", not a generic "Progressive Cup"). Position 0
-in the required sequence is always free (no item needed); every other position is gated on
+**Item naming (cups/tracks/missions)**: each required cup, time-trial track, AND mission
+gets its own individually-named item (e.g. "Mushroom Cup", not a generic "Progressive
+Cup") - missions were a later addition to this pattern (see "One free unlock per
+section" below), same reasoning applies unchanged. Position 0 in each category's
+required sequence is always free (no item needed); every other position is gated on
 *receiving that exact position's own item* - not a count, not a predecessor chain. This
 preserves the same solvability guarantee the old count-based "Progressive Cup x N" design
 had (a well-defined, always-solvable access hierarchy with a free entry point) while letting
@@ -71,37 +72,186 @@ was never stronger than this anyway - identical "Progressive Cup" copies could b
 the fill algorithm in any order, so "hold N copies" never actually enforced strict
 sequential play.
 
-**Karts have no per-kart flag** (confirmed via mkds-re's `ExtraKartUnlockState`/
-`CharacterKartUnlockFlags` enums - authoritative, matches earlier empirical testing where
-unlocking characters cascaded into "all karts unlocked"). Availability is a coarse 4-tier
-progress state, not an individual flag, so kart randomization works by patching each
-character's *starting kart assignment* rather than hooking a native per-kart unlock. "Yes
-only each character's unique karts" is fully achievable by forcing the existing tier to
-`TotalUnlock` - vanilla's own per-character picker does the rest correctly. "Yes all" (any
-character, any unlocked kart) has no vanilla UI path at all and is an **open design fork**:
-either an ASM patch to the kart-select bounds-check (candidate:
-`CheckExtraKartUnlockFlagsWith`, EU `0x02056DAC`), or writing the intended kart directly into
-`RaceConfig.racer_entries[player_driver_id].kart_id` before the race starts - which still
-needs some UI for the player to express which received kart they want, since vanilla's
-picker can't browse all 36. Not implemented either way; worth the user's input when this
-becomes the active blocker.
+**All 36 real karts are individually unlockable** (`items.KARTS`, wiki-cross-verified
+against mkds-re's real `KartId` enum - see `rom_addresses.KART_ID_TO_NAME`), each usable
+by any character (mkds-re confirms no engine-level kart/character pairing restriction).
+Supersedes an earlier design that collapsed everything to a single shared "Standard
+Kart" item - see "All 36 karts individually unlockable" below for the redesign and a
+real fill-deadlock bug (pre-existing in that earlier design, not introduced by the
+expansion) found along the way.
 
-**Time Trial track access has the same shape of problem**: derived entirely from Grand Prix
-cup-unlock state (win a cup, its 4 tracks become time-trial-selectable) - no independent
-per-track flag exists. `items.py` has one item per track (32 total, per Instructions.txt),
-but the native mechanism only unlocks in groups of 4. Not blocking anything built so far
-(`rules.py`'s logic layer doesn't care how the real unlock eventually gets implemented), but
-whoever implements the real client-side enforcement needs either an ASM patch or a different
-granularity decision.
+**Time Trial track access is derived entirely from Grand Prix cup-unlock state** (no
+independent per-track flag) - not directly relevant anymore since access itself is no
+longer restricted either way (see below); tracks stay individually-named items purely for
+the goal-logic layer (`rules.py`), same pattern as cups.
 
-**Missions have no "Progressive Mission" item** - Randomize Mission Mode only shuffles which
-mission occupies each of the 63 slots, it doesn't gate access to Mission Mode itself. Mission
-locations use an unconditional access rule regardless of required-ness.
+**Missions are item-gated the same way cups/tracks are** (changed - see "One free unlock
+per section" below; originally missions had no item at all, unconditionally reachable).
+Randomize Mission Mode still only controls whether Mission Mode participates in the AP
+economy at all - slot shuffling (which mission occupies which level position) was
+dropped separately and stays dropped; only *access* changed, not vanilla slot placement.
 
 **`create_regions` only instantiates goal-required locations**, not the full ~198-location
 table - matches Instructions.txt's actual design (non-required content isn't a real AP
 location at all, not just "doesn't need an item"). If this ever changes, remember
 `create_items`'s pool sizing and `rules.py`'s rule-iteration both currently assume it.
+
+## Check-validity enforcement (replaced the ASM-patch approach)
+
+After the ASM-patch investigation below found no way to suppress vanilla's baseline
+content (8 starters, base karts, 4 free cups - nothing gates them at the game level), the
+design pivoted: force the game fully unlocked, and gate *checks* instead of *access*. A
+check only sends if the character AND kart actually used for the run were legitimately
+received as items - not just the cup/track/mission itself. This trades "physically
+impossible to cheat" for "no incentive to cheat," which sidesteps the ASM problem
+entirely rather than solving it.
+
+**`_apply_received_items`** (`client.py`) no longer does incremental per-item bit-writes -
+it just writes `UNLOCK_MASK_EVERYTHING` once, idempotently, completely decoupled from
+`ctx.items_received`. The old per-character unlock-bit mapping (`CHARACTER_UNLOCK_BITS`
+and its individual `UNLOCK_BIT_DAISY`/etc. constants) was removed from `rom_addresses.py`
+entirely once nothing referenced it anymore (see "One free unlock per section" below -
+`STARTER_CHARACTERS` went the same way). `CUP_UNLOCK_MASKS` is kept, still unused by any
+code path, purely as historical documentation of the empirical bit map (the bits
+themselves are still real and still what `UNLOCK_MASK_EVERYTHING` sets) - the individual
+constants feeding it aren't reused anywhere else the way the character ones weren't.
+
+**The bootstrap deadlock** (found via real testing, not anticipated in the initial
+design): requiring the kart item on *every* location - including position 0, which
+already needs no cup/track item as the fill algorithm's bootstrap - makes literally
+nothing reachable with zero items, so the fill algorithm has nowhere to even place the
+kart item itself. `FillError` on generation, not a subtle bug. Fixed by exempting
+whichever location already serves as the zero-item bootstrap (position 0 of cups/tracks,
+or the first required mission if neither is active) from the kart requirement too, rather
+than introducing competing bootstrap rules. **This exemption has to match, exactly, in
+two independent places**: `rules.py`'s access rules (logical reachability, checked at
+generation time) and `client.py`'s live validity check (real-time, checked during actual
+play) - if they disagree about which location is exempt, either the solver thinks
+something is reachable that the client will never actually reward, or vice versa.
+Rather than re-derive the same "which location is bootstrap" logic twice, `rules.py`
+computes it once (`world.kart_bootstrap_exempt_locations`, populated in the same loop
+that sets access rules) and `fill_slot_data()` exposes it directly - `client.py` never
+recomputes it, just reads the list. General lesson: when a new cross-cutting requirement
+gets layered onto existing per-category rules, check whether it breaks the "something is
+always reachable with nothing" invariant before assuming the layering is safe.
+
+### One free unlock per section (extended the position-0-is-free pattern everywhere)
+
+Cups/tracks already had "position 0 is free, every other position needs its own item."
+Characters and missions didn't - **all 8 starter characters were simultaneously usable
+from the start** (a fixed `STARTER_CHARACTERS` set, unconditional), and **missions had no
+item gate at all** (every required mission unconditionally reachable). Both now follow
+the same pattern:
+
+- **Characters**: expanded from 4 items (the "lockable" ones) to all 12
+  (`items.CHARACTERS` is now `list(rom_addresses.CHARACTER_ID_TO_NAME.values())`, single
+  source of truth). One random character is free per seed
+  (`rules.choose_character_unlock_order`, exposed via slot_data as
+  `character_unlock_order`) - `client.py`'s `_is_run_legitimate` checks against
+  `character_unlock_order[0]` instead of the old fixed 8-name set. Characters still don't
+  gate any location's reachability (no access rule needed in `rules.py` - unlike
+  Standard Kart, "which character" never affects whether a cup/track/mission can be
+  logically reached, only whether `client.py` honors the check it produces), so this
+  can't be unit-tested via `assertBeatable` the way cups/tracks/missions can - only a
+  pool-content assertion (`TestCharacterUnlockOrder`).
+- **Missions**: now item-gated exactly like cups/tracks (`rules.py`'s `set_rules` gained
+  a `" - Clear"` branch using the same `_sequence_access_rule`). This *simplified*
+  `set_rules`, not just extended it: the old single shared "bootstrap location" special
+  case (`has_cup_or_track_bootstrap`/`bootstrap_mission` - only exempt the first mission
+  from the kart requirement if neither cups nor tracks were active) is gone entirely, since
+  every active category now independently exempts its own position 0. Never fewer
+  bootstrap points than before, so no risk of reintroducing the original deadlock.
+- **Real bug fixed along the way**: the old character-legitimacy check never consulted
+  `randomize_characters` at all - turning that option off never actually removed the
+  character requirement, contradicting its own docstring ("off = no checks tied to
+  them"). Fixed as part of the same rewrite (mirrors the `karts_active` on/off pattern
+  the kart check already used correctly).
+- **PopTracker pack** got a matching rework: Cups/Tracks/Missions became 3-stage
+  `progressive` items (locked / unlocked-green / unlocked-completed-grey) instead of
+  plain toggles, driven by two independent Lua signals (`AddItemHandler` for unlock,
+  a new `AddLocationHandler` for completion) plus `Archipelago.CheckedLocations` to
+  correctly resync completed items after a reconnect (bumped `min_poptracker_version` to
+  0.25.2 for that API). **Found and fixed a real drift bug** in the process: the old
+  `item_name_to_code.lua` was hand-maintained and kept tracks/missions' LOCATION name
+  (e.g. `"... - Clear"`) as the lookup key, when the real AP item-received event fires
+  with the bare item name - those two were never equal, so tracks/missions could never
+  have shown as unlocked from a real item event. `generate_pack.py` (recreated - wasn't
+  persisted on disk before this round) now derives every item/location code mapping
+  directly from `worlds/mkds`'s own item/location tables, so this class of drift can't
+  recur. Tabs (Characters/Cups/Time Trial/Missions) were also dropped in favor of one
+  continuously-scrollable page, per direct request.
+
+### All 36 karts individually unlockable (replaced the single "Standard Kart" item)
+
+Follow-up request: "all karts should be unlockable, not just the standard kart" - only
+the standard-tier kart (1 of 36 real karts) had ever been individually legitimizable;
+the other 24 (2 per character) had no item at all and could never send a check no matter
+what was received.
+
+- **Real kart names, wiki-cross-verified**: `rom_addresses.KART_ID_TO_NAME` (36 entries)
+  checked against TWO independent mariowiki.com pages (the "Mario Kart DS karts" category
+  listing and a per-character breakdown) - both agree with each other and with mkds-re's
+  `KartId` enum grouping/order, name-for-name. Two symbol-name quirks worth remembering:
+  `KartId_LightTrippler`'s real name is "Light Tripper" (one fewer 'l'), and
+  `KartId_ROBBLS`/`_ROBLGS` render with a hyphen in-game ("ROB-BLS"/"ROB-LGS").
+  `is_standard_kart()`'s tier-only formula was removed - superseded by this full table.
+- **First attempt (superseded): mandatory `has_any` progression items.** Mirrored cups/
+  tracks/missions exactly - all 36 as `state.has_any(KARTS, player)`-gated Progression
+  items, sized to fit available pool capacity (trimmed like Characters, but proven to
+  always keep >= 1 whenever any goal category is active). This fixed a real capacity-
+  overflow risk (36 mandatory items would never fit a goal needing only 1-2 locations)
+  but NOT a deeper problem, described next.
+- **The real bug: a provable fill deadlock, not just an overflow.** For a THIN category
+  (missions/time trials - exactly 1 location per required instance, unlike cups' 4-track
+  multiplier), the single always-free bootstrap location can only ever hold ONE of two
+  simultaneously-needed items (a kart item and the category's own next item) - whichever
+  one doesn't fit ends up needing itself to be reachable. Proven unsatisfiable for ANY
+  fill order via a sphere argument: whichever item lands at the one free slot, sphere 1
+  is empty regardless of which one it was, so nothing past it is ever reachable. This
+  wasn't introduced by the 36-kart expansion - the original single "Standard Kart" item
+  had the exact same shape (always exactly 1 mandatory kart item competing for the same
+  slot) and would have hit `Fill.FillError` for any real `missions_count`/
+  `time_trials_count` goal (count >= 2) combined with Randomize Karts. Nobody had tested
+  that exact combination before -
+  `test/__init__.py`'s `TestKartsWithThinCategoryNoLongerDeadlocks` is a direct
+  regression test for it now.
+- **Final design: Karts mirror Characters exactly.** Reclassified `useful`, not
+  `progression` (this also un-does an old deliberate deviation from Instructions.txt's
+  "Karts: Useful" - no longer needed). One random kart is free per seed by NAME only
+  (`rules.choose_kart_unlock_order`, mirrors `choose_character_unlock_order`) - no item,
+  no rules.py access-rule presence at all, checked client-side exactly like the free
+  character. The other 35 are one-copy Useful items sharing ONE combined bonus-pool
+  trim with Characters (`__init__.create_items()`), rather than two separate capacity
+  computations. This removes karts from the access-rule graph entirely, which removes
+  the deadlock at its root - simpler than the first attempt, not just safer.
+  `kart_bootstrap_exempt_locations` (the location-based exemption this superseded) is
+  gone; `client.py`'s `_is_run_legitimate` no longer takes a `location_name` parameter at
+  all, since kart legitimacy is now purely name-based, same as character legitimacy.
+- **PopTracker pack**: `images/kart.png` (already existed for the old single item) is
+  reused for all 36 - simple two-state toggles, no location tracking, exactly like
+  Characters (no completion concept). Own layout section (`layouts/karts`), 3-per-row
+  grid grouped by character (matches `KART_ID_TO_NAME`'s own block-of-3 order). Also
+  found and fixed a real bug in `generate_pack.py` itself while writing it: the
+  generated Lua comment headers were missing their `--` prefix on continuation lines
+  (the header string and the `_comment_header` helper both added it, meaning it appeared
+  once from each and then, after the first fix pass, was missing entirely) - would have
+  been invalid Lua syntax (a bare, non-commented text line). Caught by re-reading the
+  generated files, not by any automated check - no Lua interpreter available in this
+  environment (see the apworld-packaging methodology note elsewhere in this file).
+
+**Not yet live-verified** (implemented from research/existing confirmed addresses, not
+yet checked against real gameplay - flagged rather than assumed correct, matching this
+project's established discipline): the `RaceConfig.racer_entries[player_driver_id].
+character_id`/`.kart_id` reads specifically for the cup-win and mission-clear validity
+checks (the underlying addresses/offsets are long-confirmed for other purposes, but this
+exact read hasn't been cross-checked against what's on screen); Time Trial's finish-time
+comparison, which needs `RaceStatus`'s `RaceTime` byte format decoded before it can
+safely send a check (`client.py`'s `_decode_finish_time` deliberately returns `None` -
+skip, never send - until that's confirmed, rather than guessing a layout that could
+silently send a wrong result the way the old RaceConfig-offset saga did); and all 36
+karts individually unlocking specifically (the underlying character_id/kart_id read is
+long-confirmed, but the kart-name resolution and free-kart-by-name check built on top of
+it are new).
 
 ## Methodology lessons (things that cost real time once - avoid repeating)
 
@@ -143,16 +293,23 @@ location at all, not just "doesn't need an item"). If this ever changes, remembe
   MKDS's title/mode-select screens are touch-only, cup/character/kart select are
   button-driven, and this isn't visually obvious from a screenshot alone.
 
-## ASM patch investigation - paused, documented as a known limitation
+## ASM patch investigation - superseded, kept for historical/technical reference
 
-**The problem**: `UNLOCK_FLAGS_ADDRESS` (RAM-write enforcement) fully and reliably controls
-the 9 things vanilla MKDS gates behind its own save flags (Star/Special/Leaf/Lightning cups,
-Mirror Mode, Dry Bones, Daisy, Waluigi, R.O.B.). It does **not** control the 8 starter
-characters, each character's first 2 karts, or the 4 default-unlocked cups - vanilla treats
-these as always-available with no flag anywhere gating them, so there is nothing for this
-world to write to restrict them. Suppressing this would need a binary ASM patch to the ROM
-itself. Investigated at length; not yet achieved. Documented in `docs/setup_en.md` and the
-README as a known limitation rather than continuing to chase it unboundedly.
+**Superseded by the check-validity enforcement design above** - the world no longer needs
+or attempts to suppress vanilla's baseline access at all. Kept below because the technical
+findings (toolchain locations, the confirmed `g_SaveDataHolder` pointer chain, the overlay
+map, everything ruled out) are real, verified work that could still be useful if binary
+patching is ever revisited for a different reason - not because this is still an open
+problem blocking anything today.
+
+**The original problem**: `UNLOCK_FLAGS_ADDRESS` (RAM-write enforcement) fully and reliably
+controls the 9 things vanilla MKDS gates behind its own save flags (Star/Special/Leaf/
+Lightning cups, Mirror Mode, Dry Bones, Daisy, Waluigi, R.O.B.). It does **not** control the
+8 starter characters, each character's first 2 karts, or the 4 default-unlocked cups -
+vanilla treats these as always-available with no flag anywhere gating them, so there was
+nothing to write to restrict them. Suppressing this would have needed a binary ASM patch to
+the ROM itself; investigated at length, not achieved, then the requirement itself was
+designed around instead (see above).
 
 **Toolchain** (if resumed): `devkitARM` (real, complete - `F:\devkitPro\devkitARM\bin\`,
 `arm-none-eabi-gcc` 16.1.0 + linker/objcopy/etc.) and `Fireflower` (real, complete -
