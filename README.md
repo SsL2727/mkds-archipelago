@@ -16,10 +16,13 @@ ROM to play.
 - [`Instructions.txt`](Instructions.txt) - the original design spec this world was built
   from (options, item classification, goal types).
 - [`mkds_test.yaml`](mkds_test.yaml) - a sample player YAML for generating a test seed.
-- [`NOTES.md`](NOTES.md) - the full development log: every RAM address investigation,
-  methodology trap hit and fixed, live-verification result, and the extensive (currently
-  unresolved) ASM-patch investigation. Start here if you're picking this project back up -
-  it has far more context than this README.
+- [`NOTES.md`](NOTES.md) - condensed, actively-maintained technical reference: architecture
+  context, design decisions, methodology lessons, and the current state of the (unresolved)
+  ASM-patch investigation. Start here if you're picking this project back up.
+- [`NOTES_ARCHIVE.md`](NOTES_ARCHIVE.md) - the full chronological session-by-session log
+  `NOTES.md` was condensed from, including abandoned mechanisms and superseded findings.
+  Reference only if you need the complete investigation trail behind something in
+  `NOTES.md`.
 - [`reference/asm_tools/`](reference/asm_tools/) - standalone Python tooling for statically
   analyzing the ROM (BLZ/LZ-Overlay decompression, NDS overlay-table parsing, ARM/THUMB
   disassembly via `capstone`, literal-pool cross-referencing). No BizHawk dependency - reads
