@@ -6,6 +6,13 @@ A custom [Archipelago](https://archipelago.gg) world (multiworld randomizer inte
 This repo does **not** include the ROM. Supply your own legally-obtained EU Mario Kart DS
 ROM to play.
 
+## Getting the world
+
+Download the packaged `.apworld` and a sample player YAML from the
+**[Releases page](../../releases/latest)** rather than building from source - drop the
+`.apworld` into your Archipelago install's `custom_worlds/` folder. Building from
+`worlds/mkds/` yourself works too (see Layout below) if you want to modify it first.
+
 ## Layout
 
 - [`worlds/mkds/`](worlds/mkds/) - the actual Archipelago world: items, locations, rules,
