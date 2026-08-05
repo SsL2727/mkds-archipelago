@@ -1,0 +1,38 @@
+Randomize Time Trial
+Options: Yes or no.
+
+Randomize Mission Mode
+Options: No, yes all missions are randomized into the pool, all missions besides boss missions are randomized, all non-boss missions are randomized together and all boss missions are randomized separately.
+
+Randomize Characters
+Options: Yes, no.
+
+Randomize Karts
+Options: Yes all, No, Yes only each character's unique karts (meaning each character can only use their own unique kart).
+
+Randomize Cups
+Options: Unrandomized (cup-to-track assignment stays vanilla; which cups you unlock and the order you unlock them in are still randomized), tracks within cups are random (so any track can be in any cup, no overlap), tracks within cups are completely random (a track can appear multiple times within the 32 races).
+
+Notes on the above:
+- For every "No" option above, that category is fully vanilla: excluded entirely from the AP item/check economy, not just left unshuffled.
+- Randomizing Characters and/or Karts requires Cup randomization to be active. (Cups have no fully-vanilla/off state in this design, so this is currently always satisfied — documented here as an explicit dependency.)
+- Any character can drive any kart in the base game — there's no engine-level restriction. Under "Randomize Karts: Yes all," once a kart is unlocked, any character can use it. Under "Yes only each character's unique karts," the randomizer itself restricts kart selection to only the karts originally tied to your current character — an artificial restriction imposed by this design, not a limitation of the game.
+- CC (50cc/100cc/150cc/Mirror) is not part of this randomizer. CC selection and its unlock conditions remain completely vanilla.
+
+All Unlockables: Time Trials, Characters, Cups, and Karts.
+
+Goals: Completing Mission Mode, completing a set number of missions, beating all cups, beating a selected number of cups, completing all Time Trials, completing a selected number of Time Trials, any combination of Mission Mode, Cups, and Time Trials.
+
+Item classification
+Cups: Progressive
+Time Trials: Progressive
+Characters: Useful
+Karts: Useful
+
+"Green Flag" is the filler item name. It is purely flavor — no effect in-game.
+
+How items are unlocked: items are unlocked by winning a cup, finishing first in any race (non-repeatable — each track can only give one check), beating a staff ghost in a time trial, clearing a mission, and getting 3 stars on a mission (a separate check from just clearing it) — but only for cups/races/time trials/missions that are actually needed for the selected goal. Completing a cup/race/time trial/mission that is NOT needed for the goal does not send an AP check — it just unlocks whatever it would normally unlock in the unmodified game (the base game's own vanilla progression, applied to whatever content ended up in that slot after shuffling).
+
+When a goal only needs part of a category (e.g. "beating a selected number of cups" rather than "beating all cups"), the specific required subset is chosen at seed-generation time — it is not left open for the player to satisfy with any combination during play. Cups and Time Trials that ARE part of the goal-required set unlock progressively, but once unlocked they can be played/attempted in any order — unlocking access is not the same as a forced play order.
+
+To determine how many items each unlock source gives: take the total number of real (non-filler) items in the pool and divide by the total number of goal-required locations — cups, races, time trials, and missions (counted twice each: once for clearing, once for getting 3 stars) that are actually needed to complete the selected goal, not everything that exists in the seed. If there are fewer real items than goal-required locations, fill the remainder of the pool with "Green Flag" filler. Pool overflow (more real items than locations) is not expected to occur.

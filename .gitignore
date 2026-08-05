@@ -1,0 +1,33 @@
+# ROM/save data - copyrighted, and not something to redistribute
+*.nds
+*.sav
+*.srm
+*.state
+*.savestate
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Built/packaged artifact - regenerate from worlds/mkds via the AP packaging tool
+mkds.apworld
+
+# Vendored/external reference material - not this project's own work, re-fetch if needed:
+#   Archipelago itself:            https://github.com/ArchipelagoMW/Archipelago
+#   mkds-re (EU decompile symbols): https://github.com/XorTroll/mkds-re
+#   BizHawk source (for Lua API):   https://github.com/TASEmulators/BizHawk
+#   Pokemon Platinum apworld (rom.py pattern reference), from a local AP install
+reference/Archipelago/
+reference/mkds-re/
+reference/bizhawk_src/
+reference/asm_tools/pokemon_platinum_reference/
+
+# Generated debug output from ram_probe sessions - regenerate by running probe.lua
+reference/ram_probe/screenshots/
+reference/ram_probe/snapshots/
+reference/ram_probe/probe_log.txt
+reference/ram_probe/test_output
+reference/ram_probe/test_output2
+reference/ram_probe/trigger.txt
+reference/ram_probe/write_trigger.txt
+reference/ram_probe/macro_trigger.txt

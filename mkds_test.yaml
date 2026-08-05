@@ -1,0 +1,16 @@
+name: MKDSTest
+description: Quick end-to-end test - win 2 cups to finish
+game: Mario Kart DS
+requires:
+  version: 0.6.7
+
+Mario Kart DS:
+  randomize_time_trial: false
+  randomize_mission_mode: off
+  randomize_characters: false
+  randomize_karts: off
+  randomize_cups: unrandomized
+  goal: cups_count
+  required_cup_count: 2
+  required_time_trial_count: 0
+  required_mission_count: 0
