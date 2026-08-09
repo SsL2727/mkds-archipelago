@@ -68,7 +68,7 @@ from collections import Counter
 from typing import Optional, TYPE_CHECKING
 
 from . import _bizhawk as bizhawk
-from worlds._bizhawk.client import BizHawkClient
+from _bizhawk.client import BizHawkClient
 from NetUtils import ClientStatus
 
 from . import rom_addresses
