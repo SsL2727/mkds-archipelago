@@ -67,7 +67,7 @@ import logging
 from collections import Counter
 from typing import Optional, TYPE_CHECKING
 
-import worlds._bizhawk as bizhawk
+import _bizhawk as bizhawk
 from worlds._bizhawk.client import BizHawkClient
 from NetUtils import ClientStatus
 
