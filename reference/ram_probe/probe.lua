@@ -19,6 +19,15 @@
 --         mapped memory, e.g. for the cartridge header, which does NOT reliably appear
 --         at a fixed low address on "ARM9 System Bus" (that region can be shadowed by
 --         Instruction TCM remapping - confirmed 2026-08-04, see NOTES.md).
+--       READPTR <hex_ptr_addr> <hex_offset> <hex_len> <out_label> [domain]   dereferences a
+--         pointer first, then reads <hex_len> bytes at (pointer_value + hex_offset) - for
+--         structs reached via a fixed pointer whose TARGET moves every session (e.g.
+--         RACECONFIGMANAGER_ADDRESS/GLOBAL_MV_POINTER_ADDRESS in worlds/mkds/
+--         rom_addresses.py), unlike READAT which takes one fixed literal address. Two
+--         reads under the hood: 4 bytes at hex_ptr_addr (LE) to resolve the base, then
+--         hex_len bytes at (base + hex_offset). The output file's header line includes
+--         the resolved base address, so a null/implausible pointer is visible directly
+--         in the dump instead of just failing silently.
 --       FINDBYTES <hex_addr> <hex_len> <hex_pattern> <out_label>   raw byte-pattern search
 --         across a region (no wildcards) - writes every matching address to a file. For
 --         finding a struct by an expected field VALUE (e.g. a known character id) rather
@@ -229,6 +238,45 @@ local function advance_macro()
                 end
             else
                 log(string.format("[macro] READAT FAILED 0x%08X domain='%s': %s", addr, read_domain, tostring(bytes)))
+            end
+            macro_state = nil
+        elseif op == "READPTR" then
+            -- Dereferences a pointer, then reads LEN bytes at (pointer + offset) - see
+            -- the header comment block above for why this differs from READAT.
+            local ptr_addr = parse_hex(cmd[2])
+            local offset = parse_hex(cmd[3]) or 0
+            local len = parse_hex(cmd[4])
+            local out_label = cmd[5] or "readptr"
+            local read_domain = cmd[6] and cmd[6]:gsub("_", " ") or DOMAIN
+            local ok_ptr, ptr_bytes = pcall(function() return memory.read_bytes_as_array(ptr_addr, 4, read_domain) end)
+            if not ok_ptr then
+                log(string.format("[macro] READPTR FAILED reading pointer at 0x%08X: %s", ptr_addr, tostring(ptr_bytes)))
+            else
+                local base = ptr_bytes[1] + ptr_bytes[2] * 0x100 + ptr_bytes[3] * 0x10000 + ptr_bytes[4] * 0x1000000
+                local final_addr = base + offset
+                local ok, bytes = pcall(function() return memory.read_bytes_as_array(final_addr, len, read_domain) end)
+                if ok then
+                    local path = OUTDIR .. out_label:gsub("[^%w_%-]", "_") .. ".txt"
+                    local f = io.open(path, "w")
+                    if f then
+                        f:write(string.format(
+                            "ptr_addr=0x%08X resolved_base=0x%08X offset=0x%X final_addr=0x%08X len=0x%X\n",
+                            ptr_addr, base, offset, final_addr, len))
+                        for i, b in ipairs(bytes) do
+                            f:write(string.format("%02X", b))
+                            if i % 16 == 0 then f:write("\n") else f:write(" ") end
+                        end
+                        f:write("\n")
+                        f:close()
+                        log(string.format(
+                            "[macro] READPTR 0x%08X -> base=0x%08X final=0x%08X len=0x%X domain='%s' -> %s",
+                            ptr_addr, base, final_addr, len, read_domain, path))
+                    end
+                else
+                    log(string.format(
+                        "[macro] READPTR ptr_addr=0x%08X base=0x%08X final=0x%08X FAILED: %s",
+                        ptr_addr, base, final_addr, tostring(bytes)))
+                end
             end
             macro_state = nil
         elseif op == "FINDBYTES" then

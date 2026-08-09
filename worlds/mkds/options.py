@@ -35,6 +35,10 @@ class RandomizeCharacters(Toggle):
     Off: all characters are available as in the base game - no character items in the
     pool, no checks tied to them.
     On: characters unlock one at a time as Useful items received from the multiworld.
+
+    Either way, Mission Mode checks always send regardless of character - each mission
+    uses a game-determined character, not one you choose, so this option doesn't gate
+    them (see client.py's _check_mission_result).
     """
     display_name = "Randomize Characters"
 
@@ -49,6 +53,9 @@ class RandomizeKarts(Toggle):
     Useful item received from the multiworld, and the SPECIFIC kart you actually drive
     for a run must have been legitimately received (your free one, or one you found) for
     that run's check to send - see rules.py/client.py.
+
+    Either way, Mission Mode checks always send regardless of kart, for the same reason
+    as RandomizeCharacters above - see client.py's _check_mission_result.
     """
     display_name = "Randomize Karts"
 

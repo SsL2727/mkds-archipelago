@@ -1,0 +1,14 @@
+[
+  {
+    "name": "cups_map",
+    "location_size": 18,
+    "location_border_thickness": 2,
+    "img": "images/maps/cups_grid.png"
+  },
+  {
+    "name": "gp_placements_map",
+    "location_size": 64,
+    "location_border_thickness": 2,
+    "img": "images/maps/gp_placements_grid.png"
+  }
+]

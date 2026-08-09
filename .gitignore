@@ -34,3 +34,14 @@ reference/ram_probe/test_output2
 reference/ram_probe/trigger.txt
 reference/ram_probe/write_trigger.txt
 reference/ram_probe/macro_trigger.txt
+
+# Local emulator install used for manual playtesting - not this project's own work
+RALibretro-x64/
+
+# Raw wiki-downloaded source art staged at the project root during an earlier art pass -
+# superseded by mkds-poptracker/images/items/ (what generate_pack.py actually references)
+/MKDS Images/
+
+# Scratch backups of mkds-poptracker/ made ahead of destructive edits during development
+mkds-poptracker_mine/
+mkds-poptracker_pre_change/

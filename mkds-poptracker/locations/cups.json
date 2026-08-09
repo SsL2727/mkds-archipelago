@@ -1,0 +1,194 @@
+[
+  {
+    "name": "Mushroom Cup",
+    "sections": [
+      {
+        "name": "Bronze"
+      },
+      {
+        "name": "Silver"
+      },
+      {
+        "name": "Win"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "cups_map",
+        "x": 32,
+        "y": 65
+      }
+    ],
+    "access_rules": [
+      "$mkds_cup_accessible|Mushroom Cup"
+    ]
+  },
+  {
+    "name": "Flower Cup",
+    "sections": [
+      {
+        "name": "Bronze"
+      },
+      {
+        "name": "Silver"
+      },
+      {
+        "name": "Win"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "cups_map",
+        "x": 84,
+        "y": 65
+      }
+    ],
+    "access_rules": [
+      "$mkds_cup_accessible|Flower Cup"
+    ]
+  },
+  {
+    "name": "Star Cup",
+    "sections": [
+      {
+        "name": "Bronze"
+      },
+      {
+        "name": "Silver"
+      },
+      {
+        "name": "Win"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "cups_map",
+        "x": 136,
+        "y": 65
+      }
+    ],
+    "access_rules": [
+      "$mkds_cup_accessible|Star Cup"
+    ]
+  },
+  {
+    "name": "Special Cup",
+    "sections": [
+      {
+        "name": "Bronze"
+      },
+      {
+        "name": "Silver"
+      },
+      {
+        "name": "Win"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "cups_map",
+        "x": 188,
+        "y": 65
+      }
+    ],
+    "access_rules": [
+      "$mkds_cup_accessible|Special Cup"
+    ]
+  },
+  {
+    "name": "Shell Cup",
+    "sections": [
+      {
+        "name": "Bronze"
+      },
+      {
+        "name": "Silver"
+      },
+      {
+        "name": "Win"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "cups_map",
+        "x": 32,
+        "y": 151
+      }
+    ],
+    "access_rules": [
+      "$mkds_cup_accessible|Shell Cup"
+    ]
+  },
+  {
+    "name": "Banana Cup",
+    "sections": [
+      {
+        "name": "Bronze"
+      },
+      {
+        "name": "Silver"
+      },
+      {
+        "name": "Win"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "cups_map",
+        "x": 84,
+        "y": 151
+      }
+    ],
+    "access_rules": [
+      "$mkds_cup_accessible|Banana Cup"
+    ]
+  },
+  {
+    "name": "Leaf Cup",
+    "sections": [
+      {
+        "name": "Bronze"
+      },
+      {
+        "name": "Silver"
+      },
+      {
+        "name": "Win"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "cups_map",
+        "x": 136,
+        "y": 151
+      }
+    ],
+    "access_rules": [
+      "$mkds_cup_accessible|Leaf Cup"
+    ]
+  },
+  {
+    "name": "Lightning Cup",
+    "sections": [
+      {
+        "name": "Bronze"
+      },
+      {
+        "name": "Silver"
+      },
+      {
+        "name": "Win"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "cups_map",
+        "x": 188,
+        "y": 151
+      }
+    ],
+    "access_rules": [
+      "$mkds_cup_accessible|Lightning Cup"
+    ]
+  }
+]

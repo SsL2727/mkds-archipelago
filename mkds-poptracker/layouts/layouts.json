@@ -1,6 +1,7 @@
 {
   "layouts/characters": {
     "type": "itemgrid",
+    "item_size": "64,64",
     "rows": [
       [
         "char_Mario",
@@ -24,13 +25,12 @@
   },
   "layouts/karts": {
     "type": "itemgrid",
+    "item_size": "64,64",
     "rows": [
       [
         "kart_Standard_MR",
         "kart_Shooting_Star",
-        "kart_B_Dasher"
-      ],
-      [
+        "kart_B_Dasher",
         "kart_Standard_DK",
         "kart_Wildlife",
         "kart_Rambi_Rider"
@@ -38,9 +38,7 @@
       [
         "kart_Standard_TD",
         "kart_Mushmellow",
-        "kart_4_Wheel_Cradle"
-      ],
-      [
+        "kart_4_Wheel_Cradle",
         "kart_Standard_BW",
         "kart_Hurricane",
         "kart_Tyrant"
@@ -48,9 +46,7 @@
       [
         "kart_Standard_PC",
         "kart_Light_Tripper",
-        "kart_Royale"
-      ],
-      [
+        "kart_Royale",
         "kart_Standard_WR",
         "kart_Brute",
         "kart_Dragonfly"
@@ -58,9 +54,7 @@
       [
         "kart_Standard_YS",
         "kart_Egg_1",
-        "kart_Cucumber"
-      ],
-      [
+        "kart_Cucumber",
         "kart_Standard_LG",
         "kart_Poltergust_4000",
         "kart_Streamliner"
@@ -68,9 +62,7 @@
       [
         "kart_Standard_DB",
         "kart_Dry_Bomber",
-        "kart_Banisher"
-      ],
-      [
+        "kart_Banisher",
         "kart_Standard_DS",
         "kart_Light_Dancer",
         "kart_Power_Flower"
@@ -78,87 +70,103 @@
       [
         "kart_Standard_WL",
         "kart_Gold_Mantis",
-        "kart_Zipper"
-      ],
-      [
+        "kart_Zipper",
         "kart_Standard_RB",
         "kart_ROB_BLS",
         "kart_ROB_LGS"
       ]
     ]
   },
-  "layouts/cups": {
+  "layouts/top_left": {
+    "type": "array",
+    "orientation": "vertical",
+    "content": [
+      {
+        "type": "layout",
+        "key": "layouts/characters"
+      },
+      {
+        "type": "layout",
+        "key": "layouts/karts"
+      }
+    ]
+  },
+  "layouts/progress": {
     "type": "itemgrid",
+    "item_size": "64,64",
     "rows": [
       [
-        "cup_Mushroom_Cup",
-        "cup_Flower_Cup",
-        "cup_Star_Cup",
-        "cup_Special_Cup"
-      ],
-      [
-        "cup_Shell_Cup",
-        "cup_Banana_Cup",
-        "cup_Leaf_Cup",
-        "cup_Lightning_Cup"
+        "progress_cups",
+        "progress_time_trial",
+        "progress_missions"
       ]
     ]
   },
+  "layouts/cups_map": {
+    "type": "map",
+    "maps": [
+      "cups_map"
+    ],
+    "max_width": 220,
+    "max_height": 172
+  },
+  "layouts/gp_placements_map": {
+    "type": "map",
+    "maps": [
+      "gp_placements_map"
+    ],
+    "max_width": 656,
+    "max_height": 336
+  },
   "layouts/time_trial": {
     "type": "itemgrid",
+    "item_size": "64,64",
     "rows": [
       [
-        "track_Figure_8_Circuit",
-        "track_Yoshi_Falls",
-        "track_Cheep_Cheep_Beach",
-        "track_Luigi_s_Mansion"
+        "tt_Figure_8_Circuit",
+        "tt_Yoshi_Falls",
+        "tt_Cheep_Cheep_Beach",
+        "tt_Luigi_s_Mansion",
+        "tt_Desert_Hills",
+        "tt_Delfino_Square",
+        "tt_Waluigi_Pinball",
+        "tt_Shroom_Ridge"
       ],
       [
-        "track_Desert_Hills",
-        "track_Delfino_Square",
-        "track_Waluigi_Pinball",
-        "track_Shroom_Ridge"
+        "tt_DK_Pass",
+        "tt_Tick_Tock_Clock",
+        "tt_Mario_Circuit",
+        "tt_Airship_Fortress",
+        "tt_Wario_Stadium",
+        "tt_Peach_Gardens",
+        "tt_Bowser_s_Castle",
+        "tt_Rainbow_Road"
       ],
       [
-        "track_DK_Pass",
-        "track_Tick_Tock_Clock",
-        "track_Mario_Circuit",
-        "track_Airship_Fortress"
+        "tt_SNES_Mario_Circuit_1",
+        "tt_N64_Moo_Moo_Farm",
+        "tt_GBA_Peach_Circuit",
+        "tt_GCN_Luigi_Circuit",
+        "tt_SNES_Donut_Plains_1",
+        "tt_N64_Frappe_Snowland",
+        "tt_GBA_Bowser_Castle_2",
+        "tt_GCN_Baby_Park"
       ],
       [
-        "track_Wario_Stadium",
-        "track_Peach_Gardens",
-        "track_Bowser_s_Castle",
-        "track_Rainbow_Road"
-      ],
-      [
-        "track_SNES_Mario_Circuit_1",
-        "track_N64_Moo_Moo_Farm",
-        "track_GBA_Peach_Circuit",
-        "track_GCN_Luigi_Circuit"
-      ],
-      [
-        "track_SNES_Donut_Plains_1",
-        "track_N64_Frappe_Snowland",
-        "track_GBA_Bowser_Castle_2",
-        "track_GCN_Baby_Park"
-      ],
-      [
-        "track_SNES_Koopa_Beach_2",
-        "track_N64_Choco_Mountain",
-        "track_GBA_Luigi_Circuit",
-        "track_GCN_Mushroom_Bridge"
-      ],
-      [
-        "track_SNES_Choco_Island_2",
-        "track_N64_Banshee_Boardwalk",
-        "track_GBA_Sky_Garden",
-        "track_GCN_Yoshi_Circuit"
+        "tt_SNES_Koopa_Beach_2",
+        "tt_N64_Choco_Mountain",
+        "tt_GBA_Luigi_Circuit",
+        "tt_GCN_Mushroom_Bridge",
+        "tt_SNES_Choco_Island_2",
+        "tt_N64_Banshee_Boardwalk",
+        "tt_GBA_Sky_Garden",
+        "tt_GCN_Yoshi_Circuit"
       ]
     ]
   },
   "layouts/missions": {
     "type": "itemgrid",
+    "item_size": "64,64",
     "rows": [
       [
         "mission_L1M1",
@@ -239,22 +247,38 @@
       ]
     ]
   },
-  "tracker_default": {
+  "layouts/main_tab": {
     "type": "array",
     "orientation": "vertical",
     "content": [
       {
-        "type": "layout",
-        "key": "layouts/characters"
+        "type": "array",
+        "orientation": "horizontal",
+        "content": [
+          {
+            "type": "layout",
+            "key": "layouts/top_left"
+          },
+          {
+            "type": "layout",
+            "key": "layouts/cups_map"
+          },
+          {
+            "type": "layout",
+            "key": "layouts/progress"
+          }
+        ]
       },
       {
         "type": "layout",
-        "key": "layouts/karts"
-      },
-      {
-        "type": "layout",
-        "key": "layouts/cups"
-      },
+        "key": "layouts/gp_placements_map"
+      }
+    ]
+  },
+  "layouts/tracks_missions_tab": {
+    "type": "array",
+    "orientation": "vertical",
+    "content": [
       {
         "type": "layout",
         "key": "layouts/time_trial"
@@ -262,6 +286,25 @@
       {
         "type": "layout",
         "key": "layouts/missions"
+      }
+    ]
+  },
+  "tracker_default": {
+    "type": "tabbed",
+    "tabs": [
+      {
+        "title": "Main",
+        "content": {
+          "type": "layout",
+          "key": "layouts/main_tab"
+        }
+      },
+      {
+        "title": "Time Trial & Missions",
+        "content": {
+          "type": "layout",
+          "key": "layouts/tracks_missions_tab"
+        }
       }
     ]
   }

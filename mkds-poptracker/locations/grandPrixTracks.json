@@ -1,0 +1,834 @@
+[
+  {
+    "name": "Figure-8 Circuit",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 48,
+        "y": 48
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|Figure-8 Circuit"
+    ],
+    "chest_unopened_img": "images/items/MKDS_Figure_8_Circuit_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_Figure_8_Circuit_Course_Icon.png"
+  },
+  {
+    "name": "Yoshi Falls",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 128,
+        "y": 48
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|Yoshi Falls"
+    ],
+    "chest_unopened_img": "images/items/MKDS_Yoshi_Falls_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_Yoshi_Falls_Course_Icon.png"
+  },
+  {
+    "name": "Cheep Cheep Beach",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 208,
+        "y": 48
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|Cheep Cheep Beach"
+    ],
+    "chest_unopened_img": "images/items/MKDS_Cheep_Cheep_Beach_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_Cheep_Cheep_Beach_Course_Icon.png"
+  },
+  {
+    "name": "Luigi's Mansion",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 288,
+        "y": 48
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|Luigi's Mansion"
+    ],
+    "chest_unopened_img": "images/items/MKDS_Luigi's_Mansion_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_Luigi's_Mansion_Course_Icon.png"
+  },
+  {
+    "name": "Desert Hills",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 368,
+        "y": 48
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|Desert Hills"
+    ],
+    "chest_unopened_img": "images/items/MKDS_Desert_Hills_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_Desert_Hills_Course_Icon.png"
+  },
+  {
+    "name": "Delfino Square",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 448,
+        "y": 48
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|Delfino Square"
+    ],
+    "chest_unopened_img": "images/items/MKDS_Delfino_Square_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_Delfino_Square_Course_Icon.png"
+  },
+  {
+    "name": "Waluigi Pinball",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 528,
+        "y": 48
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|Waluigi Pinball"
+    ],
+    "chest_unopened_img": "images/items/MKDS_Waluigi_Pinball_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_Waluigi_Pinball_Course_Icon.png"
+  },
+  {
+    "name": "Shroom Ridge",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 608,
+        "y": 48
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|Shroom Ridge"
+    ],
+    "chest_unopened_img": "images/items/MKDS_Shroom_Ridge_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_Shroom_Ridge_Course_Icon.png"
+  },
+  {
+    "name": "DK Pass",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 48,
+        "y": 128
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|DK Pass"
+    ],
+    "chest_unopened_img": "images/items/MKDS_DK_Pass_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_DK_Pass_Course_Icon.png"
+  },
+  {
+    "name": "Tick-Tock Clock",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 128,
+        "y": 128
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|Tick-Tock Clock"
+    ],
+    "chest_unopened_img": "images/items/MKDS_Tick-Tock_Clock_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_Tick-Tock_Clock_Course_Icon.png"
+  },
+  {
+    "name": "Mario Circuit",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 208,
+        "y": 128
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|Mario Circuit"
+    ],
+    "chest_unopened_img": "images/items/MKDS_Mario_Circuit_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_Mario_Circuit_Course_Icon.png"
+  },
+  {
+    "name": "Airship Fortress",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 288,
+        "y": 128
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|Airship Fortress"
+    ],
+    "chest_unopened_img": "images/items/MKDS_Airship_Fortress_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_Airship_Fortress_Course_Icon.png"
+  },
+  {
+    "name": "Wario Stadium",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 368,
+        "y": 128
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|Wario Stadium"
+    ],
+    "chest_unopened_img": "images/items/MKDS_Wario_Stadium_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_Wario_Stadium_Course_Icon.png"
+  },
+  {
+    "name": "Peach Gardens",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 448,
+        "y": 128
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|Peach Gardens"
+    ],
+    "chest_unopened_img": "images/items/MKDS_Peach_Gardens_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_Peach_Gardens_Course_Icon.png"
+  },
+  {
+    "name": "Bowser's Castle",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 528,
+        "y": 128
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|Bowser's Castle"
+    ],
+    "chest_unopened_img": "images/items/MKDS_Bowser_Castle_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_Bowser_Castle_Course_Icon.png"
+  },
+  {
+    "name": "Rainbow Road",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 608,
+        "y": 128
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|Rainbow Road"
+    ],
+    "chest_unopened_img": "images/items/MKDS_Rainbow_Road_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_Rainbow_Road_Course_Icon.png"
+  },
+  {
+    "name": "SNES Mario Circuit 1",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 48,
+        "y": 208
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|SNES Mario Circuit 1"
+    ],
+    "chest_unopened_img": "images/items/MKDS_SNES_Mario_Circuit_1_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_SNES_Mario_Circuit_1_Course_Icon.png"
+  },
+  {
+    "name": "N64 Moo Moo Farm",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 128,
+        "y": 208
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|N64 Moo Moo Farm"
+    ],
+    "chest_unopened_img": "images/items/MKDS_N64_Moo_Moo_Farm_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_N64_Moo_Moo_Farm_Course_Icon.png"
+  },
+  {
+    "name": "GBA Peach Circuit",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 208,
+        "y": 208
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|GBA Peach Circuit"
+    ],
+    "chest_unopened_img": "images/items/MKDS_GBA_Peach_Circuit_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_GBA_Peach_Circuit_Course_Icon.png"
+  },
+  {
+    "name": "GCN Luigi Circuit",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 288,
+        "y": 208
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|GCN Luigi Circuit"
+    ],
+    "chest_unopened_img": "images/items/MKDS_GCN_Luigi_Circuit_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_GCN_Luigi_Circuit_Course_Icon.png"
+  },
+  {
+    "name": "SNES Donut Plains 1",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 368,
+        "y": 208
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|SNES Donut Plains 1"
+    ],
+    "chest_unopened_img": "images/items/MKDS_SNES_Donut_Plains_1_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_SNES_Donut_Plains_1_Course_Icon.png"
+  },
+  {
+    "name": "N64 Frappe Snowland",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 448,
+        "y": 208
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|N64 Frappe Snowland"
+    ],
+    "chest_unopened_img": "images/items/MKDS_N64_Frappe_Snowland_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_N64_Frappe_Snowland_Course_Icon.png"
+  },
+  {
+    "name": "GBA Bowser Castle 2",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 528,
+        "y": 208
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|GBA Bowser Castle 2"
+    ],
+    "chest_unopened_img": "images/items/MKDS_GBA_Bowser_Castle_2_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_GBA_Bowser_Castle_2_Course_Icon.png"
+  },
+  {
+    "name": "GCN Baby Park",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 608,
+        "y": 208
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|GCN Baby Park"
+    ],
+    "chest_unopened_img": "images/items/MKDS_GCN_Baby_Park_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_GCN_Baby_Park_Course_Icon.png"
+  },
+  {
+    "name": "SNES Koopa Beach 2",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 48,
+        "y": 288
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|SNES Koopa Beach 2"
+    ],
+    "chest_unopened_img": "images/items/MKDS_SNES_Koopa_Beach_2_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_SNES_Koopa_Beach_2_Course_Icon.png"
+  },
+  {
+    "name": "N64 Choco Mountain",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 128,
+        "y": 288
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|N64 Choco Mountain"
+    ],
+    "chest_unopened_img": "images/items/MKDS_N64_Choco_Mountain_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_N64_Choco_Mountain_Course_Icon.png"
+  },
+  {
+    "name": "GBA Luigi Circuit",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 208,
+        "y": 288
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|GBA Luigi Circuit"
+    ],
+    "chest_unopened_img": "images/items/MKDS_GBA_Luigi_Circuit_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_GBA_Luigi_Circuit_Course_Icon.png"
+  },
+  {
+    "name": "GCN Mushroom Bridge",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 288,
+        "y": 288
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|GCN Mushroom Bridge"
+    ],
+    "chest_unopened_img": "images/items/MKDS_GCN_Mushroom_Bridge_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_GCN_Mushroom_Bridge_Course_Icon.png"
+  },
+  {
+    "name": "SNES Choco Island 2",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 368,
+        "y": 288
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|SNES Choco Island 2"
+    ],
+    "chest_unopened_img": "images/items/MKDS_SNES_Choco_Island_2_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_SNES_Choco_Island_2_Course_Icon.png"
+  },
+  {
+    "name": "N64 Banshee Boardwalk",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 448,
+        "y": 288
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|N64 Banshee Boardwalk"
+    ],
+    "chest_unopened_img": "images/items/MKDS_N64_Banshee_Boardwalk_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_N64_Banshee_Boardwalk_Course_Icon.png"
+  },
+  {
+    "name": "GBA Sky Garden",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 528,
+        "y": 288
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|GBA Sky Garden"
+    ],
+    "chest_unopened_img": "images/items/MKDS_GBA_Sky_Garden_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_GBA_Sky_Garden_Course_Icon.png"
+  },
+  {
+    "name": "GCN Yoshi Circuit",
+    "sections": [
+      {
+        "name": "3rd Place"
+      },
+      {
+        "name": "2nd Place"
+      },
+      {
+        "name": "1st Place"
+      }
+    ],
+    "map_locations": [
+      {
+        "map": "gp_placements_map",
+        "x": 608,
+        "y": 288
+      }
+    ],
+    "access_rules": [
+      "$mkds_track_accessible|GCN Yoshi Circuit"
+    ],
+    "chest_unopened_img": "images/items/MKDS_GCN_Yoshi_Circuit_Course_Icon.png",
+    "chest_opened_img": "images/items/MKDS_GCN_Yoshi_Circuit_Course_Icon.png"
+  }
+]

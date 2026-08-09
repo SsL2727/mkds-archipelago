@@ -82,37 +82,58 @@ CHARACTERS = list(rom_addresses.CHARACTER_ID_TO_NAME.values())
 # formerly-broken configuration.
 KARTS = list(rom_addresses.KART_ID_TO_NAME.values())
 
-# --- Cup / Time Trial / Mission unlock items (Progression) ----------------------------
-# One item PER CUP, PER TRACK, and PER MISSION, named directly after what it unlocks -
-# e.g. receiving "Special Cup" unlocks Special Cup. Missions follow this exact pattern
-# too (added later than cups/tracks, same reasoning throughout this block applies
-# unchanged - one item per required mission, position 0 free). Replaces an earlier design
-# that used a single
-# generically-named "Progressive Cup" item, counted (Nth copy unlocks the Nth required
-# cup in generation-time order) - real playtesting (2026-08-04) found this confusing in
-# practice ("You received: Progressive Cup!" doesn't say WHICH cup). Switching to
-# directly-named items doesn't weaken the design in any real way: the old counted system
-# never actually guaranteed the player would play through cups in strict left-to-right
-# order either - since every copy was identical, the fill algorithm could freely place
-# several/all of them within the very first required cup's own reachable locations,
-# letting a player receive count=3 (say) without ever touching cups 1 or 2. Both designs
-# provide the exact same structural guarantee: a solvable, well-defined access hierarchy
-# where the FIRST required cup/track is free and every other one needs its own specific
-# item to be found (rules.py gates that item's own PLACEMENT to somewhere already
-# reachable, which is what actually creates progression, not receipt order of an
-# otherwise-interchangeable counted item). See rules.py's set_rules for the access rules
-# that pair with these names, and CHANGELOG-worthy behavior change: the FIRST required
-# cup/track no longer gets an item created for it at all (nothing to unlock - it's free
-# from the start), where the old design created one "spare" Progressive Cup copy per
-# seed that wasn't strictly needed for access.
+# --- Individual Cup/Time Trial/Mission unlock items (Progression, one per entry) -------
+# REDESIGNED 2026-08-06, per user direction: "all items from categories that include at
+# least one location must be accessible" - every cup/track/mission a category could ever
+# grant a check for is now ALWAYS a real AP location whenever that category is part of
+# the goal at all (not just a pre-chosen subset sized to the configured count), and the
+# player picks freely which ones to actually go complete.
 #
-# Cups, tracks, and missions (CUPS/TRACKS/MISSIONS) live in locations.py - that's the
-# authoritative source, not duplicated here. Every one of the 8 cups, 32 tracks, and 63
-# missions gets a static item table entry (needed regardless of which ones end up
-# goal-required in a given seed, same as location_table covers every possible location up
-# front) - create_items() only actually creates/places the ones a specific seed's
-# required_cups_in_order/required_time_trials_in_order/required_missions_in_order call
-# for (skipping position 0 in each, per above).
+# REDESIGNED AGAIN 2026-08-06, per user direction: "the player should only start with
+# either 1 cup, time trial, or mission" - each active category starts with exactly ONE
+# randomly-chosen bootstrap location freely reachable (see rules.py's
+# choose_category_bootstrap), same "random position, no item needed" idea
+# choose_character_unlock_order/choose_kart_unlock_order already use, just applied per
+# category instead of per character/kart.
+#
+# REDESIGNED A THIRD TIME 2026-08-06: "don't unlock everything at once through one item.
+# Each time trial and mission should be unlocked individually."
+#
+# REDESIGNED A FOURTH TIME 2026-08-06: "Cups should also be unlocked individually along
+# with drivers and karts. Everything should be unlocked individually." Every cup/track/
+# mission gets its own directly-named Progression item, mirroring Characters/Karts' own
+# "one free by name, the rest individually named" pattern exactly (and the OLDEST
+# pre-2026-08-06 design, before any of today's several redesigns) - receiving
+# CUP_NAME/TRACK_NAME/MISSION_NAME makes exactly that one cup/track/mission's own
+# locations reachable, nothing else.
+#
+# REDESIGNED A FIFTH TIME 2026-08-06, per direct user direction, removing an earlier
+# mistake: "I do not want any item that counts towards the goal. The only thing that
+# counts towards the goal is complete the cup, time trial, or mission." An earlier
+# version of this file also had a separate fungible "Trophy" item per category (Cup
+# Trophy/Staff Ghost Trophy/Mission Trophy), awarded on top of the real check, purely to
+# give rules.py's completion_condition something item-shaped to count. That was a real
+# design flaw the user correctly called out: because Trophy copies were ordinary shuffled
+# Progression items, the fill algorithm could place any given copy at ANY reachable
+# location - not necessarily the specific cup/track/mission it was "for" - so a player
+# could in principle satisfy the goal by receiving N Trophy copies from unrelated checks
+# (or even another player's world) without ever actually completing that many
+# cups/tracks/missions themselves. Removed entirely - see rules.py's completion_condition
+# for what replaced it (checking whether the REQUIRED locations themselves are
+# reachable/completed, not counting a received item).
+#
+# Capacity note: without a Trophy item competing for room, every category's individual-
+# unlock demand is just (M - 1) - always less than its own M real locations - so ALL
+# THREE categories (Cups, Time Trial, Missions) now unconditionally use individual
+# unlocking with no fallback needed at all (mirroring Characters/Karts exactly) - the
+# earlier "Time Trial Key"/"Mission Key" shared-Key fallback and its whole capacity-
+# solving mechanism (rules.decide_unlock_modes) existed only to make room for Trophy
+# copies alongside individual unlock items, and is gone now that there's nothing left to
+# make room for.
+CUP_UNLOCK_NAMES = list(CUPS)
+TRACK_UNLOCK_NAMES = list(TRACKS)
+MISSION_UNLOCK_NAMES = list(MISSIONS)
+
 FILLER_ITEM_NAME = "Green Flag"
 
 
@@ -128,15 +149,15 @@ def build_item_table() -> dict[str, ItemData]:
         table[name] = ItemData(next_id, ItemClassification.useful)
         next_id += 1
 
-    for name in CUPS:
+    for name in CUP_UNLOCK_NAMES:
         table[name] = ItemData(next_id, ItemClassification.progression)
         next_id += 1
 
-    for name in TRACKS:
+    for name in TRACK_UNLOCK_NAMES:
         table[name] = ItemData(next_id, ItemClassification.progression)
         next_id += 1
 
-    for name in MISSIONS:
+    for name in MISSION_UNLOCK_NAMES:
         table[name] = ItemData(next_id, ItemClassification.progression)
         next_id += 1
 

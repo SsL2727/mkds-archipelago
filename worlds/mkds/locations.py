@@ -12,12 +12,14 @@
 # cross-verified against two sources, the 56 non-boss objectives are single-sourced, same
 # confidence tier as the unconfirmed tracks). Cup names ARE confirmed against
 # Instructions.txt. Missions only track "- Clear" (not "3 Stars" - dropped per user
-# direction, since rank detection was never implemented and mission checks now go
-# through the same character/kart validity gate as everything else - see rules.py).
+# direction, since rank detection was never implemented; mission checks no longer go
+# through character/kart validation either - see client.py's _check_mission_result).
 #
-# Every location below is only a real (item-granting) AP location if it's part of the
-# goal-required subset for the seed - see rules.py for how that subset gets chosen and
-# how non-required content instead just follows vanilla unlock progression.
+# Every location below is only a real AP location if its category is part of the seed's
+# goal at all (e.g. Cups exist only if the goal involves Cups) - see rules.py's
+# decide_goal_requirements. As of 2026-08-06, a category being "part of the goal" means
+# ALL of its content becomes real, checkable locations (not just a subset sized to the
+# configured required count) - see rules.py's module docstring for the full reasoning.
 
 from typing import NamedTuple, Optional
 
@@ -163,12 +165,23 @@ def build_location_table() -> dict[str, LocationData]:
     table: dict[str, LocationData] = {}
     next_id = base_id
 
+    # "Win" is the GOLD tier (kept as the existing name - it's what a cup win has always
+    # been called). Silver/Bronze added 2026-08-06, mirroring the cumulative 3rd/2nd/1st
+    # Place pattern tracks already have - see rules.py/client.py's _check_cup_result.
     for cup in CUPS:
         table[f"{cup} - Win"] = LocationData(next_id, "Grand Prix")
+        next_id += 1
+        table[f"{cup} - Silver"] = LocationData(next_id, "Grand Prix")
+        next_id += 1
+        table[f"{cup} - Bronze"] = LocationData(next_id, "Grand Prix")
         next_id += 1
 
     for track in TRACKS:
         table[f"{track} - 1st Place"] = LocationData(next_id, "Grand Prix")
+        next_id += 1
+        table[f"{track} - 2nd Place"] = LocationData(next_id, "Grand Prix")
+        next_id += 1
+        table[f"{track} - 3rd Place"] = LocationData(next_id, "Grand Prix")
         next_id += 1
 
     for track in TRACKS:

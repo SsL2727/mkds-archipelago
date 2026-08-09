@@ -2,7 +2,7 @@
   {
     "type": "toggle",
     "name": "Mario",
-    "img": "images/character.png",
+    "img": "images/items/Mario_MKDS_record_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -11,7 +11,7 @@
   {
     "type": "toggle",
     "name": "Donkey Kong",
-    "img": "images/character.png",
+    "img": "images/items/DK_MKDS_record_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -20,7 +20,7 @@
   {
     "type": "toggle",
     "name": "Toad",
-    "img": "images/character.png",
+    "img": "images/items/Toad_MKDS_record_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -29,7 +29,7 @@
   {
     "type": "toggle",
     "name": "Bowser",
-    "img": "images/character.png",
+    "img": "images/items/Bowser_MKDS_record_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -38,7 +38,7 @@
   {
     "type": "toggle",
     "name": "Peach",
-    "img": "images/character.png",
+    "img": "images/items/Peach_MKDS_record_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -47,7 +47,7 @@
   {
     "type": "toggle",
     "name": "Wario",
-    "img": "images/character.png",
+    "img": "images/items/Wario_MKDS_record_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -56,7 +56,7 @@
   {
     "type": "toggle",
     "name": "Yoshi",
-    "img": "images/character.png",
+    "img": "images/items/Yoshi_MKDS_record_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -65,7 +65,7 @@
   {
     "type": "toggle",
     "name": "Luigi",
-    "img": "images/character.png",
+    "img": "images/items/Luigi_MKDS_record_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -74,7 +74,7 @@
   {
     "type": "toggle",
     "name": "Dry Bones",
-    "img": "images/character.png",
+    "img": "images/items/Dry_Bones_MKDS_record_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -83,7 +83,7 @@
   {
     "type": "toggle",
     "name": "Daisy",
-    "img": "images/character.png",
+    "img": "images/items/Daisy_MKDS_record_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -92,7 +92,7 @@
   {
     "type": "toggle",
     "name": "Waluigi",
-    "img": "images/character.png",
+    "img": "images/items/Waluigi_MKDS_record_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -101,7 +101,7 @@
   {
     "type": "toggle",
     "name": "R.O.B.",
-    "img": "images/character.png",
+    "img": "images/items/ROB_MKDS_record_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -110,7 +110,7 @@
   {
     "type": "toggle",
     "name": "Standard MR",
-    "img": "images/kart.png",
+    "img": "images/items/Standard_MR_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -119,7 +119,7 @@
   {
     "type": "toggle",
     "name": "Shooting Star",
-    "img": "images/kart.png",
+    "img": "images/items/Shooting_Star_MKDS_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -128,7 +128,7 @@
   {
     "type": "toggle",
     "name": "B Dasher",
-    "img": "images/kart.png",
+    "img": "images/items/MKDS_icon_B_Dasher.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -137,7 +137,7 @@
   {
     "type": "toggle",
     "name": "Standard DK",
-    "img": "images/kart.png",
+    "img": "images/items/Standard_DK_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -146,7 +146,7 @@
   {
     "type": "toggle",
     "name": "Wildlife",
-    "img": "images/kart.png",
+    "img": "images/items/Wildlife_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -155,7 +155,7 @@
   {
     "type": "toggle",
     "name": "Rambi Rider",
-    "img": "images/kart.png",
+    "img": "images/items/MKDS_icon_Rambi_Rider.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -164,7 +164,7 @@
   {
     "type": "toggle",
     "name": "Standard TD",
-    "img": "images/kart.png",
+    "img": "images/items/MKDS_icon_Standard_TD.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -173,7 +173,7 @@
   {
     "type": "toggle",
     "name": "Mushmellow",
-    "img": "images/kart.png",
+    "img": "images/items/Mushmellow_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -182,7 +182,7 @@
   {
     "type": "toggle",
     "name": "4-Wheel Cradle",
-    "img": "images/kart.png",
+    "img": "images/items/MKDS_icon_4-Wheel_Cradle.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -191,7 +191,7 @@
   {
     "type": "toggle",
     "name": "Standard BW",
-    "img": "images/kart.png",
+    "img": "images/items/Standard_BW_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -200,7 +200,7 @@
   {
     "type": "toggle",
     "name": "Hurricane",
-    "img": "images/kart.png",
+    "img": "images/items/Hurricane_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -209,7 +209,7 @@
   {
     "type": "toggle",
     "name": "Tyrant",
-    "img": "images/kart.png",
+    "img": "images/items/MKDS_icon_Tyrant.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -218,7 +218,7 @@
   {
     "type": "toggle",
     "name": "Standard PC",
-    "img": "images/kart.png",
+    "img": "images/items/MKDS_icon_Standard_PC.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -227,7 +227,7 @@
   {
     "type": "toggle",
     "name": "Light Tripper",
-    "img": "images/kart.png",
+    "img": "images/items/MKDS_icon_Light_Tripper.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -236,7 +236,7 @@
   {
     "type": "toggle",
     "name": "Royale",
-    "img": "images/kart.png",
+    "img": "images/items/Royale_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -245,7 +245,7 @@
   {
     "type": "toggle",
     "name": "Standard WR",
-    "img": "images/kart.png",
+    "img": "images/items/MKDS_icon_Standard_WR.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -254,7 +254,7 @@
   {
     "type": "toggle",
     "name": "Brute",
-    "img": "images/kart.png",
+    "img": "images/items/Brute_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -263,7 +263,7 @@
   {
     "type": "toggle",
     "name": "Dragonfly",
-    "img": "images/kart.png",
+    "img": "images/items/Dragonfly_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -272,7 +272,7 @@
   {
     "type": "toggle",
     "name": "Standard YS",
-    "img": "images/kart.png",
+    "img": "images/items/Standard_YS_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -281,7 +281,7 @@
   {
     "type": "toggle",
     "name": "Egg 1",
-    "img": "images/kart.png",
+    "img": "images/items/Egg_1_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -290,7 +290,7 @@
   {
     "type": "toggle",
     "name": "Cucumber",
-    "img": "images/kart.png",
+    "img": "images/items/MKDS_icon_Cucumber.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -299,7 +299,7 @@
   {
     "type": "toggle",
     "name": "Standard LG",
-    "img": "images/kart.png",
+    "img": "images/items/MKDS_icon_Standard_LG.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -308,7 +308,7 @@
   {
     "type": "toggle",
     "name": "Poltergust 4000",
-    "img": "images/kart.png",
+    "img": "images/items/Poltergust_4000_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -317,7 +317,7 @@
   {
     "type": "toggle",
     "name": "Streamliner",
-    "img": "images/kart.png",
+    "img": "images/items/Streamliner_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -326,7 +326,7 @@
   {
     "type": "toggle",
     "name": "Standard DB",
-    "img": "images/kart.png",
+    "img": "images/items/MKDS_icon_Standard_DB.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -335,7 +335,7 @@
   {
     "type": "toggle",
     "name": "Dry Bomber",
-    "img": "images/kart.png",
+    "img": "images/items/Dry_Bomber_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -344,7 +344,7 @@
   {
     "type": "toggle",
     "name": "Banisher",
-    "img": "images/kart.png",
+    "img": "images/items/MKDS_icon_Banisher.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -353,7 +353,7 @@
   {
     "type": "toggle",
     "name": "Standard DS",
-    "img": "images/kart.png",
+    "img": "images/items/MKDS_icon_Standard_DS.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -362,7 +362,7 @@
   {
     "type": "toggle",
     "name": "Light Dancer",
-    "img": "images/kart.png",
+    "img": "images/items/MKDS_icon_Light_Tripper.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -371,7 +371,7 @@
   {
     "type": "toggle",
     "name": "Power Flower",
-    "img": "images/kart.png",
+    "img": "images/items/Power_Flower_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -380,7 +380,7 @@
   {
     "type": "toggle",
     "name": "Standard WL",
-    "img": "images/kart.png",
+    "img": "images/items/MKDS_icon_Standard_WL.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -389,7 +389,7 @@
   {
     "type": "toggle",
     "name": "Gold Mantis",
-    "img": "images/kart.png",
+    "img": "images/items/Gold_Mantis_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -398,7 +398,7 @@
   {
     "type": "toggle",
     "name": "Zipper",
-    "img": "images/kart.png",
+    "img": "images/items/Zipper_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -407,7 +407,7 @@
   {
     "type": "toggle",
     "name": "Standard RB",
-    "img": "images/kart.png",
+    "img": "images/items/MKDS_icon_Standard_RB.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -416,7 +416,7 @@
   {
     "type": "toggle",
     "name": "ROB-BLS",
-    "img": "images/kart.png",
+    "img": "images/items/ROB-BLS_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
@@ -425,689 +425,667 @@
   {
     "type": "toggle",
     "name": "ROB-LGS",
-    "img": "images/kart.png",
+    "img": "images/items/ROB-LGS_icon.png",
     "disabled_img_mods": [
       "grey"
     ],
     "codes": "kart_ROB_LGS"
   },
   {
+    "type": "toggle",
+    "name": "Cups Progress",
+    "img": "images/items/MKDS_Mushroom_Cup_Gold_Trophy.png",
+    "codes": "progress_cups"
+  },
+  {
+    "type": "toggle",
+    "name": "Time Trial Progress",
+    "img": "images/items/MKDS_Figure_8_Circuit_Course_Icon.png",
+    "codes": "progress_time_trial"
+  },
+  {
+    "type": "toggle",
+    "name": "Missions Progress",
+    "img": "images/items/1-1.PNG",
+    "codes": "progress_missions"
+  },
+  {
     "type": "progressive",
-    "name": "Mushroom Cup",
+    "name": "Time Trial - Figure-8 Circuit",
     "initial_stage_idx": 0,
-    "codes": "cup_Mushroom_Cup",
+    "codes": "tt_Figure_8_Circuit",
     "stages": [
       {
-        "img": "images/cup.png"
+        "img": "images/items/MKDS_Figure_8_Circuit_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/cup_green.png"
+        "img": "images/items/MKDS_Figure_8_Circuit_Course_Icon.png"
       },
       {
-        "img": "images/cup_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "Flower Cup",
+    "name": "Time Trial - Yoshi Falls",
     "initial_stage_idx": 0,
-    "codes": "cup_Flower_Cup",
+    "codes": "tt_Yoshi_Falls",
     "stages": [
       {
-        "img": "images/cup.png"
+        "img": "images/items/MKDS_Yoshi_Falls_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/cup_green.png"
+        "img": "images/items/MKDS_Yoshi_Falls_Course_Icon.png"
       },
       {
-        "img": "images/cup_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "Star Cup",
+    "name": "Time Trial - Cheep Cheep Beach",
     "initial_stage_idx": 0,
-    "codes": "cup_Star_Cup",
+    "codes": "tt_Cheep_Cheep_Beach",
     "stages": [
       {
-        "img": "images/cup.png"
+        "img": "images/items/MKDS_Cheep_Cheep_Beach_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/cup_green.png"
+        "img": "images/items/MKDS_Cheep_Cheep_Beach_Course_Icon.png"
       },
       {
-        "img": "images/cup_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "Special Cup",
+    "name": "Time Trial - Luigi's Mansion",
     "initial_stage_idx": 0,
-    "codes": "cup_Special_Cup",
+    "codes": "tt_Luigi_s_Mansion",
     "stages": [
       {
-        "img": "images/cup.png"
+        "img": "images/items/MKDS_Luigi's_Mansion_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/cup_green.png"
+        "img": "images/items/MKDS_Luigi's_Mansion_Course_Icon.png"
       },
       {
-        "img": "images/cup_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "Shell Cup",
+    "name": "Time Trial - Desert Hills",
     "initial_stage_idx": 0,
-    "codes": "cup_Shell_Cup",
+    "codes": "tt_Desert_Hills",
     "stages": [
       {
-        "img": "images/cup.png"
+        "img": "images/items/MKDS_Desert_Hills_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/cup_green.png"
+        "img": "images/items/MKDS_Desert_Hills_Course_Icon.png"
       },
       {
-        "img": "images/cup_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "Banana Cup",
+    "name": "Time Trial - Delfino Square",
     "initial_stage_idx": 0,
-    "codes": "cup_Banana_Cup",
+    "codes": "tt_Delfino_Square",
     "stages": [
       {
-        "img": "images/cup.png"
+        "img": "images/items/MKDS_Delfino_Square_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/cup_green.png"
+        "img": "images/items/MKDS_Delfino_Square_Course_Icon.png"
       },
       {
-        "img": "images/cup_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "Leaf Cup",
+    "name": "Time Trial - Waluigi Pinball",
     "initial_stage_idx": 0,
-    "codes": "cup_Leaf_Cup",
+    "codes": "tt_Waluigi_Pinball",
     "stages": [
       {
-        "img": "images/cup.png"
+        "img": "images/items/MKDS_Waluigi_Pinball_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/cup_green.png"
+        "img": "images/items/MKDS_Waluigi_Pinball_Course_Icon.png"
       },
       {
-        "img": "images/cup_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "Lightning Cup",
+    "name": "Time Trial - Shroom Ridge",
     "initial_stage_idx": 0,
-    "codes": "cup_Lightning_Cup",
+    "codes": "tt_Shroom_Ridge",
     "stages": [
       {
-        "img": "images/cup.png"
+        "img": "images/items/MKDS_Shroom_Ridge_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/cup_green.png"
+        "img": "images/items/MKDS_Shroom_Ridge_Course_Icon.png"
       },
       {
-        "img": "images/cup_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "Figure-8 Circuit",
+    "name": "Time Trial - DK Pass",
     "initial_stage_idx": 0,
-    "codes": "track_Figure_8_Circuit",
+    "codes": "tt_DK_Pass",
     "stages": [
       {
-        "img": "images/track.png"
+        "img": "images/items/MKDS_DK_Pass_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/track_green.png"
+        "img": "images/items/MKDS_DK_Pass_Course_Icon.png"
       },
       {
-        "img": "images/track_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "Yoshi Falls",
+    "name": "Time Trial - Tick-Tock Clock",
     "initial_stage_idx": 0,
-    "codes": "track_Yoshi_Falls",
+    "codes": "tt_Tick_Tock_Clock",
     "stages": [
       {
-        "img": "images/track.png"
+        "img": "images/items/MKDS_Tick-Tock_Clock_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/track_green.png"
+        "img": "images/items/MKDS_Tick-Tock_Clock_Course_Icon.png"
       },
       {
-        "img": "images/track_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "Cheep Cheep Beach",
+    "name": "Time Trial - Mario Circuit",
     "initial_stage_idx": 0,
-    "codes": "track_Cheep_Cheep_Beach",
+    "codes": "tt_Mario_Circuit",
     "stages": [
       {
-        "img": "images/track.png"
+        "img": "images/items/MKDS_Mario_Circuit_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/track_green.png"
+        "img": "images/items/MKDS_Mario_Circuit_Course_Icon.png"
       },
       {
-        "img": "images/track_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "Luigi's Mansion",
+    "name": "Time Trial - Airship Fortress",
     "initial_stage_idx": 0,
-    "codes": "track_Luigi_s_Mansion",
+    "codes": "tt_Airship_Fortress",
     "stages": [
       {
-        "img": "images/track.png"
+        "img": "images/items/MKDS_Airship_Fortress_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/track_green.png"
+        "img": "images/items/MKDS_Airship_Fortress_Course_Icon.png"
       },
       {
-        "img": "images/track_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "Desert Hills",
+    "name": "Time Trial - Wario Stadium",
     "initial_stage_idx": 0,
-    "codes": "track_Desert_Hills",
+    "codes": "tt_Wario_Stadium",
     "stages": [
       {
-        "img": "images/track.png"
+        "img": "images/items/MKDS_Wario_Stadium_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/track_green.png"
+        "img": "images/items/MKDS_Wario_Stadium_Course_Icon.png"
       },
       {
-        "img": "images/track_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "Delfino Square",
+    "name": "Time Trial - Peach Gardens",
     "initial_stage_idx": 0,
-    "codes": "track_Delfino_Square",
+    "codes": "tt_Peach_Gardens",
     "stages": [
       {
-        "img": "images/track.png"
+        "img": "images/items/MKDS_Peach_Gardens_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/track_green.png"
+        "img": "images/items/MKDS_Peach_Gardens_Course_Icon.png"
       },
       {
-        "img": "images/track_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "Waluigi Pinball",
+    "name": "Time Trial - Bowser's Castle",
     "initial_stage_idx": 0,
-    "codes": "track_Waluigi_Pinball",
+    "codes": "tt_Bowser_s_Castle",
     "stages": [
       {
-        "img": "images/track.png"
+        "img": "images/items/MKDS_Bowser_Castle_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/track_green.png"
+        "img": "images/items/MKDS_Bowser_Castle_Course_Icon.png"
       },
       {
-        "img": "images/track_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "Shroom Ridge",
+    "name": "Time Trial - Rainbow Road",
     "initial_stage_idx": 0,
-    "codes": "track_Shroom_Ridge",
+    "codes": "tt_Rainbow_Road",
     "stages": [
       {
-        "img": "images/track.png"
+        "img": "images/items/MKDS_Rainbow_Road_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/track_green.png"
+        "img": "images/items/MKDS_Rainbow_Road_Course_Icon.png"
       },
       {
-        "img": "images/track_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "DK Pass",
+    "name": "Time Trial - SNES Mario Circuit 1",
     "initial_stage_idx": 0,
-    "codes": "track_DK_Pass",
+    "codes": "tt_SNES_Mario_Circuit_1",
     "stages": [
       {
-        "img": "images/track.png"
+        "img": "images/items/MKDS_SNES_Mario_Circuit_1_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/track_green.png"
+        "img": "images/items/MKDS_SNES_Mario_Circuit_1_Course_Icon.png"
       },
       {
-        "img": "images/track_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "Tick-Tock Clock",
+    "name": "Time Trial - N64 Moo Moo Farm",
     "initial_stage_idx": 0,
-    "codes": "track_Tick_Tock_Clock",
+    "codes": "tt_N64_Moo_Moo_Farm",
     "stages": [
       {
-        "img": "images/track.png"
+        "img": "images/items/MKDS_N64_Moo_Moo_Farm_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/track_green.png"
+        "img": "images/items/MKDS_N64_Moo_Moo_Farm_Course_Icon.png"
       },
       {
-        "img": "images/track_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "Mario Circuit",
+    "name": "Time Trial - GBA Peach Circuit",
     "initial_stage_idx": 0,
-    "codes": "track_Mario_Circuit",
+    "codes": "tt_GBA_Peach_Circuit",
     "stages": [
       {
-        "img": "images/track.png"
+        "img": "images/items/MKDS_GBA_Peach_Circuit_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/track_green.png"
+        "img": "images/items/MKDS_GBA_Peach_Circuit_Course_Icon.png"
       },
       {
-        "img": "images/track_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "Airship Fortress",
+    "name": "Time Trial - GCN Luigi Circuit",
     "initial_stage_idx": 0,
-    "codes": "track_Airship_Fortress",
+    "codes": "tt_GCN_Luigi_Circuit",
     "stages": [
       {
-        "img": "images/track.png"
+        "img": "images/items/MKDS_GCN_Luigi_Circuit_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/track_green.png"
+        "img": "images/items/MKDS_GCN_Luigi_Circuit_Course_Icon.png"
       },
       {
-        "img": "images/track_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "Wario Stadium",
+    "name": "Time Trial - SNES Donut Plains 1",
     "initial_stage_idx": 0,
-    "codes": "track_Wario_Stadium",
+    "codes": "tt_SNES_Donut_Plains_1",
     "stages": [
       {
-        "img": "images/track.png"
+        "img": "images/items/MKDS_SNES_Donut_Plains_1_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/track_green.png"
+        "img": "images/items/MKDS_SNES_Donut_Plains_1_Course_Icon.png"
       },
       {
-        "img": "images/track_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "Peach Gardens",
+    "name": "Time Trial - N64 Frappe Snowland",
     "initial_stage_idx": 0,
-    "codes": "track_Peach_Gardens",
+    "codes": "tt_N64_Frappe_Snowland",
     "stages": [
       {
-        "img": "images/track.png"
+        "img": "images/items/MKDS_N64_Frappe_Snowland_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/track_green.png"
+        "img": "images/items/MKDS_N64_Frappe_Snowland_Course_Icon.png"
       },
       {
-        "img": "images/track_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "Bowser's Castle",
+    "name": "Time Trial - GBA Bowser Castle 2",
     "initial_stage_idx": 0,
-    "codes": "track_Bowser_s_Castle",
+    "codes": "tt_GBA_Bowser_Castle_2",
     "stages": [
       {
-        "img": "images/track.png"
+        "img": "images/items/MKDS_GBA_Bowser_Castle_2_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/track_green.png"
+        "img": "images/items/MKDS_GBA_Bowser_Castle_2_Course_Icon.png"
       },
       {
-        "img": "images/track_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "Rainbow Road",
+    "name": "Time Trial - GCN Baby Park",
     "initial_stage_idx": 0,
-    "codes": "track_Rainbow_Road",
+    "codes": "tt_GCN_Baby_Park",
     "stages": [
       {
-        "img": "images/track.png"
+        "img": "images/items/MKDS_GCN_Baby_Park_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/track_green.png"
+        "img": "images/items/MKDS_GCN_Baby_Park_Course_Icon.png"
       },
       {
-        "img": "images/track_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "SNES Mario Circuit 1",
+    "name": "Time Trial - SNES Koopa Beach 2",
     "initial_stage_idx": 0,
-    "codes": "track_SNES_Mario_Circuit_1",
+    "codes": "tt_SNES_Koopa_Beach_2",
     "stages": [
       {
-        "img": "images/track.png"
+        "img": "images/items/MKDS_SNES_Koopa_Beach_2_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/track_green.png"
+        "img": "images/items/MKDS_SNES_Koopa_Beach_2_Course_Icon.png"
       },
       {
-        "img": "images/track_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "N64 Moo Moo Farm",
+    "name": "Time Trial - N64 Choco Mountain",
     "initial_stage_idx": 0,
-    "codes": "track_N64_Moo_Moo_Farm",
+    "codes": "tt_N64_Choco_Mountain",
     "stages": [
       {
-        "img": "images/track.png"
+        "img": "images/items/MKDS_N64_Choco_Mountain_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/track_green.png"
+        "img": "images/items/MKDS_N64_Choco_Mountain_Course_Icon.png"
       },
       {
-        "img": "images/track_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "GBA Peach Circuit",
+    "name": "Time Trial - GBA Luigi Circuit",
     "initial_stage_idx": 0,
-    "codes": "track_GBA_Peach_Circuit",
+    "codes": "tt_GBA_Luigi_Circuit",
     "stages": [
       {
-        "img": "images/track.png"
+        "img": "images/items/MKDS_GBA_Luigi_Circuit_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/track_green.png"
+        "img": "images/items/MKDS_GBA_Luigi_Circuit_Course_Icon.png"
       },
       {
-        "img": "images/track_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "GCN Luigi Circuit",
+    "name": "Time Trial - GCN Mushroom Bridge",
     "initial_stage_idx": 0,
-    "codes": "track_GCN_Luigi_Circuit",
+    "codes": "tt_GCN_Mushroom_Bridge",
     "stages": [
       {
-        "img": "images/track.png"
+        "img": "images/items/MKDS_GCN_Mushroom_Bridge_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/track_green.png"
+        "img": "images/items/MKDS_GCN_Mushroom_Bridge_Course_Icon.png"
       },
       {
-        "img": "images/track_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "SNES Donut Plains 1",
+    "name": "Time Trial - SNES Choco Island 2",
     "initial_stage_idx": 0,
-    "codes": "track_SNES_Donut_Plains_1",
+    "codes": "tt_SNES_Choco_Island_2",
     "stages": [
       {
-        "img": "images/track.png"
+        "img": "images/items/MKDS_SNES_Choco_Island_2_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/track_green.png"
+        "img": "images/items/MKDS_SNES_Choco_Island_2_Course_Icon.png"
       },
       {
-        "img": "images/track_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "N64 Frappe Snowland",
+    "name": "Time Trial - N64 Banshee Boardwalk",
     "initial_stage_idx": 0,
-    "codes": "track_N64_Frappe_Snowland",
+    "codes": "tt_N64_Banshee_Boardwalk",
     "stages": [
       {
-        "img": "images/track.png"
+        "img": "images/items/MKDS_N64_Banshee_Boardwalk_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/track_green.png"
+        "img": "images/items/MKDS_N64_Banshee_Boardwalk_Course_Icon.png"
       },
       {
-        "img": "images/track_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "GBA Bowser Castle 2",
+    "name": "Time Trial - GBA Sky Garden",
     "initial_stage_idx": 0,
-    "codes": "track_GBA_Bowser_Castle_2",
+    "codes": "tt_GBA_Sky_Garden",
     "stages": [
       {
-        "img": "images/track.png"
+        "img": "images/items/MKDS_GBA_Sky_Garden_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/track_green.png"
+        "img": "images/items/MKDS_GBA_Sky_Garden_Course_Icon.png"
       },
       {
-        "img": "images/track_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
   {
     "type": "progressive",
-    "name": "GCN Baby Park",
+    "name": "Time Trial - GCN Yoshi Circuit",
     "initial_stage_idx": 0,
-    "codes": "track_GCN_Baby_Park",
+    "codes": "tt_GCN_Yoshi_Circuit",
     "stages": [
       {
-        "img": "images/track.png"
+        "img": "images/items/MKDS_GCN_Yoshi_Circuit_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/track_green.png"
+        "img": "images/items/MKDS_GCN_Yoshi_Circuit_Course_Icon.png"
       },
       {
-        "img": "images/track_grey.png"
-      }
-    ]
-  },
-  {
-    "type": "progressive",
-    "name": "SNES Koopa Beach 2",
-    "initial_stage_idx": 0,
-    "codes": "track_SNES_Koopa_Beach_2",
-    "stages": [
-      {
-        "img": "images/track.png"
-      },
-      {
-        "img": "images/track_green.png"
-      },
-      {
-        "img": "images/track_grey.png"
-      }
-    ]
-  },
-  {
-    "type": "progressive",
-    "name": "N64 Choco Mountain",
-    "initial_stage_idx": 0,
-    "codes": "track_N64_Choco_Mountain",
-    "stages": [
-      {
-        "img": "images/track.png"
-      },
-      {
-        "img": "images/track_green.png"
-      },
-      {
-        "img": "images/track_grey.png"
-      }
-    ]
-  },
-  {
-    "type": "progressive",
-    "name": "GBA Luigi Circuit",
-    "initial_stage_idx": 0,
-    "codes": "track_GBA_Luigi_Circuit",
-    "stages": [
-      {
-        "img": "images/track.png"
-      },
-      {
-        "img": "images/track_green.png"
-      },
-      {
-        "img": "images/track_grey.png"
-      }
-    ]
-  },
-  {
-    "type": "progressive",
-    "name": "GCN Mushroom Bridge",
-    "initial_stage_idx": 0,
-    "codes": "track_GCN_Mushroom_Bridge",
-    "stages": [
-      {
-        "img": "images/track.png"
-      },
-      {
-        "img": "images/track_green.png"
-      },
-      {
-        "img": "images/track_grey.png"
-      }
-    ]
-  },
-  {
-    "type": "progressive",
-    "name": "SNES Choco Island 2",
-    "initial_stage_idx": 0,
-    "codes": "track_SNES_Choco_Island_2",
-    "stages": [
-      {
-        "img": "images/track.png"
-      },
-      {
-        "img": "images/track_green.png"
-      },
-      {
-        "img": "images/track_grey.png"
-      }
-    ]
-  },
-  {
-    "type": "progressive",
-    "name": "N64 Banshee Boardwalk",
-    "initial_stage_idx": 0,
-    "codes": "track_N64_Banshee_Boardwalk",
-    "stages": [
-      {
-        "img": "images/track.png"
-      },
-      {
-        "img": "images/track_green.png"
-      },
-      {
-        "img": "images/track_grey.png"
-      }
-    ]
-  },
-  {
-    "type": "progressive",
-    "name": "GBA Sky Garden",
-    "initial_stage_idx": 0,
-    "codes": "track_GBA_Sky_Garden",
-    "stages": [
-      {
-        "img": "images/track.png"
-      },
-      {
-        "img": "images/track_green.png"
-      },
-      {
-        "img": "images/track_grey.png"
-      }
-    ]
-  },
-  {
-    "type": "progressive",
-    "name": "GCN Yoshi Circuit",
-    "initial_stage_idx": 0,
-    "codes": "track_GCN_Yoshi_Circuit",
-    "stages": [
-      {
-        "img": "images/track.png"
-      },
-      {
-        "img": "images/track_green.png"
-      },
-      {
-        "img": "images/track_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1118,13 +1096,16 @@
     "codes": "mission_L1M1",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/1-1.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/1-1.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1135,13 +1116,16 @@
     "codes": "mission_L1M2",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/1-2.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/1-2.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1152,13 +1136,16 @@
     "codes": "mission_L1M3",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/1-3.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/1-3.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1169,13 +1156,16 @@
     "codes": "mission_L1M4",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/1-4.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/1-4.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1186,13 +1176,16 @@
     "codes": "mission_L1M5",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/1-5.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/1-5.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1203,13 +1196,16 @@
     "codes": "mission_L1M6",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/1-6.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/1-6.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1220,13 +1216,16 @@
     "codes": "mission_L1M7",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/1-7.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/1-7.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1237,13 +1236,16 @@
     "codes": "mission_L1M8",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/1-8.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/1-8.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1254,13 +1256,16 @@
     "codes": "mission_L1M9",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/MKDS_Big_Bully_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/MKDS_Big_Bully_Course_Icon.png"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1271,13 +1276,16 @@
     "codes": "mission_L2M1",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/2-1.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/2-1.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1288,13 +1296,16 @@
     "codes": "mission_L2M2",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/2-2.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/2-2.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1305,13 +1316,16 @@
     "codes": "mission_L2M3",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/2-3.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/2-3.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1322,13 +1336,16 @@
     "codes": "mission_L2M4",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/2-4.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/2-4.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1339,13 +1356,16 @@
     "codes": "mission_L2M5",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/2-5.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/2-5.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1356,13 +1376,16 @@
     "codes": "mission_L2M6",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/2-6.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/2-6.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1373,13 +1396,16 @@
     "codes": "mission_L2M7",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/2-7.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/2-7.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1390,13 +1416,16 @@
     "codes": "mission_L2M8",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/2-8.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/2-8.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1407,13 +1436,16 @@
     "codes": "mission_L2M9",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/MKDS_Eyerok_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/MKDS_Eyerok_Course_Icon.png"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1424,13 +1456,16 @@
     "codes": "mission_L3M1",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/3-1.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/3-1.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1441,13 +1476,16 @@
     "codes": "mission_L3M2",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/3-2.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/3-2.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1458,13 +1496,16 @@
     "codes": "mission_L3M3",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/3-3.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/3-3.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1475,13 +1516,16 @@
     "codes": "mission_L3M4",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/3-4.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/3-4.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1492,13 +1536,16 @@
     "codes": "mission_L3M5",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/3-5.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/3-5.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1509,13 +1556,16 @@
     "codes": "mission_L3M6",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/3-6.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/3-6.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1526,13 +1576,16 @@
     "codes": "mission_L3M7",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/3-7.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/3-7.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1543,13 +1596,16 @@
     "codes": "mission_L3M8",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/3-8.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/3-8.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1560,13 +1616,16 @@
     "codes": "mission_L3M9",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/MKDS_Goomboss_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/MKDS_Goomboss_Course_Icon.png"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1577,13 +1636,16 @@
     "codes": "mission_L4M1",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/4-1.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/4-1.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1594,13 +1656,16 @@
     "codes": "mission_L4M2",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/4-2.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/4-2.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1611,13 +1676,16 @@
     "codes": "mission_L4M3",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/4-3.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/4-3.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1628,13 +1696,16 @@
     "codes": "mission_L4M4",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/4-4.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/4-4.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1645,13 +1716,16 @@
     "codes": "mission_L4M5",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/4-5.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/4-5.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1662,13 +1736,16 @@
     "codes": "mission_L4M6",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/4-6.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/4-6.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1679,13 +1756,16 @@
     "codes": "mission_L4M7",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/4-7.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/4-7.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1696,13 +1776,16 @@
     "codes": "mission_L4M8",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/4-8.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/4-8.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1713,13 +1796,16 @@
     "codes": "mission_L4M9",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/MKDS_King_Boo_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/MKDS_King_Boo_Course_Icon.png"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1730,13 +1816,16 @@
     "codes": "mission_L5M1",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/5-1.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/5-1.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1747,13 +1836,16 @@
     "codes": "mission_L5M2",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/5-2.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/5-2.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1764,13 +1856,16 @@
     "codes": "mission_L5M3",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/5-3.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/5-3.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1781,13 +1876,16 @@
     "codes": "mission_L5M4",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/5-4.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/5-4.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1798,13 +1896,16 @@
     "codes": "mission_L5M5",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/5-5.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/5-5.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1815,13 +1916,16 @@
     "codes": "mission_L5M6",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/5-6.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/5-6.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1832,13 +1936,16 @@
     "codes": "mission_L5M7",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/5-7.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/5-7.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1849,13 +1956,16 @@
     "codes": "mission_L5M8",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/5-8.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/5-8.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1866,13 +1976,16 @@
     "codes": "mission_L5M9",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/MKDS_Big_Bob-omb_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/MKDS_Big_Bob-omb_Course_Icon.png"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1883,13 +1996,16 @@
     "codes": "mission_L6M1",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/6-1.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/6-1.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1900,13 +2016,16 @@
     "codes": "mission_L6M2",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/6-2.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/6-2.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1917,13 +2036,16 @@
     "codes": "mission_L6M3",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/6-3.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/6-3.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1934,13 +2056,16 @@
     "codes": "mission_L6M4",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/6-4.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/6-4.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1951,13 +2076,16 @@
     "codes": "mission_L6M5",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/6-5.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/6-5.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1968,13 +2096,16 @@
     "codes": "mission_L6M6",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/6-6.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/6-6.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -1985,13 +2116,16 @@
     "codes": "mission_L6M7",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/6-7.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/6-7.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -2002,13 +2136,16 @@
     "codes": "mission_L6M8",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/6-8.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/6-8.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -2019,13 +2156,16 @@
     "codes": "mission_L6M9",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/MKDS_Chief_Chilly_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/MKDS_Chief_Chilly_Course_Icon.png"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -2036,13 +2176,16 @@
     "codes": "mission_L7M1",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/7-1.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/7-1.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -2053,13 +2196,16 @@
     "codes": "mission_L7M2",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/7-2.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/7-2.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -2070,13 +2216,16 @@
     "codes": "mission_L7M3",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/7-3.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/7-3.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -2087,13 +2236,16 @@
     "codes": "mission_L7M4",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/7-4.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/7-4.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -2104,13 +2256,16 @@
     "codes": "mission_L7M5",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/7-5.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/7-5.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -2121,13 +2276,16 @@
     "codes": "mission_L7M6",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/7-6.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/7-6.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -2138,13 +2296,16 @@
     "codes": "mission_L7M7",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/7-7.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/7-7.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -2155,13 +2316,16 @@
     "codes": "mission_L7M8",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/7-8.PNG",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/7-8.PNG"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   },
@@ -2172,13 +2336,16 @@
     "codes": "mission_L7M9",
     "stages": [
       {
-        "img": "images/mission.png"
+        "img": "images/items/MKDS_Wiggler_Course_Icon.png",
+        "img_mods": [
+          "grey"
+        ]
       },
       {
-        "img": "images/mission_green.png"
+        "img": "images/items/MKDS_Wiggler_Course_Icon.png"
       },
       {
-        "img": "images/mission_grey.png"
+        "img": "images/items/track.png"
       }
     ]
   }

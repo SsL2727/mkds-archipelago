@@ -59,18 +59,212 @@ and resolved incidents have been cut. For the full chronological development his
 
 ## Design decisions worth remembering
 
-**Item naming (cups/tracks/missions)**: each required cup, time-trial track, AND mission
-gets its own individually-named item (e.g. "Mushroom Cup", not a generic "Progressive
-Cup") - missions were a later addition to this pattern (see "One free unlock per
-section" below), same reasoning applies unchanged. Position 0 in each category's
-required sequence is always free (no item needed); every other position is gated on
-*receiving that exact position's own item* - not a count, not a predecessor chain. This
-preserves the same solvability guarantee the old count-based "Progressive Cup x N" design
-had (a well-defined, always-solvable access hierarchy with a free entry point) while letting
-the received item's name say what it actually unlocks. The old counted design's guarantee
-was never stronger than this anyway - identical "Progressive Cup" copies could be placed by
-the fill algorithm in any order, so "hold N copies" never actually enforced strict
-sequential play.
+**Full category accessibility + fungible Trophy items (2026-08-06, replaced per-item
+sequential unlock)**: every cup, time-trial track, and mission is a real AP location
+whenever its category is part of the goal at all - not just a pre-chosen subset sized to
+the configured required count. Per user direction: "even if one time trial is the
+designated goal amount, all time trials must be accessible and give a check." The player
+picks freely what to complete; only a plain COUNT of category-fungible Trophy items
+actually received (`items.CUP_TROPHY_NAME`/`TIME_TRIAL_TROPHY_NAME`/`MISSION_TROPHY_NAME`)
+satisfies completion - the standard Archipelago "any N of M" pattern
+(`state.has(TROPHY_NAME, player, N)`, see `rules.py`'s `set_rules`). This entirely
+replaces the earlier "position 0 free, every other position gated on its own directly-
+named item" scheme described below (`_sequence_access_rule`, since removed). Individual
+race placements (3rd/2nd/1st) and cup Silver/Bronze tiers remain bonus-only, same as
+before: real checks along the way, never part of completion_condition. Cup wins are now
+cumulative too (Bronze/Silver/Gold, mirroring race placements exactly) rather than a
+single Gold-or-nothing check - see `client.py`'s `_check_cup_result`. Characters/Karts
+are unaffected (still Useful, never access-rule-gated - see below).
+
+**Bootstrap + Key gating layered back on top (2026-08-06, same day, second pass)**: per
+direct follow-up feedback ("the new apworld starts with everything unlocked. The player
+should only start with either 1 cup, time trial, or mission"), the "unlock order" that
+was just removed above came back in a different shape. The "any N of M" full-
+accessibility goal design is NOT reversed - every cup/track/mission in an active category
+is still a real location and the goal is still a plain Trophy count - only the STARTING
+reachability changed. Each ACTIVE category independently gets exactly ONE randomly-chosen
+bootstrap location reachable with zero items (`rules.choose_category_bootstrap`, mirroring
+`choose_character_unlock_order`/`choose_kart_unlock_order`'s own "random position, no item
+needed" pattern) - every OTHER location in that category needs that category's own Key
+item (`items.CUP_KEY_NAME`/`TIME_TRIAL_KEY_NAME`/`MISSION_KEY_NAME`), which opens the
+ENTIRE rest of the category at once (not sequentially, unlike the original pre-"full
+accessibility" design). If multiple categories are active, each gets its own independent
+bootstrap + Key - three simultaneously-free starting locations if Cups + Time Trial +
+Missions are all active, not one globally.
+
+**A real capacity constraint forced an exception, found via a live `Generate.py` sweep
+before shipping (not theoretical)**: Time Trial and Missions are THIN categories (exactly
+1 location per track/mission, no tier multiplier the way Cups have via Win/Silver/Bronze x
+4 tracks x 3 placements each). `__init__.create_items()` sizes each category's Trophy pool
+to its own win TARGET now (not the full category list, unlike the first pass above) -
+freeing room for the Key - but when target equals the full category size (an "_all" goal,
+or a "_count" goal maxed to the category's full length), every one of that thin category's
+locations is already claimed by a mandatory Trophy, leaving zero room for a Key at all.
+Cups never hit this (120 locations across 8 cups vs. at most 9 mandatory items, always
+abundant) - see the third pass below for how Time Trial/Missions resolve it now (this
+capacity check was later generalized, not just a boolean anymore).
+
+**Individual per-track/mission unlocking, capacity-solved per seed (2026-08-06, same day,
+third pass)**: per a further direct follow-up ("don't unlock everything at once through
+one item. Each time trial and mission should be unlocked individually"), the shared Key
+from the second pass became a FALLBACK rather than the default for Time Trial/Missions
+specifically (at this point Cups still used their own single shared Key - see the fourth
+pass below for why that changed too). `rules.decide_unlock_modes` brute-forces, per seed,
+whichever combination of three modes - `"individual"` (one directly-named Progression
+item per non-bootstrap track/mission, `items.TRACK_UNLOCK_NAMES`/`MISSION_UNLOCK_NAMES` -
+just the track/mission's own name, mirroring the OLDEST pre-2026-08-06 design and
+Characters/Karts' own "one free by name, the rest individually named" shape),
+`"shared_key"` (the second pass's design), `"open"` (the first pass's design, no gating
+item at all) - actually fits this seed's real mandatory-item count within its real
+location count, preferring individual over shared_key over open. Only 3x3=9 combinations
+exist (Time Trial x Missions), so it just checks all of them rather than a hand-tuned
+heuristic - guaranteed to find the actual best fit, and always finds SOME feasible
+combination (`("open", "open")`'s demand is only each category's own win target, which can
+never exceed that category's own location count by construction).
+`world.time_trial_unlock_mode`/`mission_unlock_mode` (strings, replacing the second pass's
+`time_trial_key_active`/`mission_key_active` booleans) hold the result.
+
+**Cups join individual unlocking too, unconditionally (2026-08-06, same day, fourth
+pass)**: per a further direct follow-up ("Cups should also be unlocked individually along
+with drivers and karts. Everything should be unlocked individually"), Cups moved off the
+shared "Cup Key" entirely - `items.CUP_KEY_NAME` no longer exists. Cups now use the exact
+same one-directly-named-item-per-non-bootstrap-entry pattern as Characters/Karts and as
+Time Trial/Missions' own default (`items.CUP_UNLOCK_NAMES` - just the cup's own name), but
+UNCONDITIONALLY, with no fallback machinery of Cups' own: even the worst case (`cups_all`,
+all 8 required) needs only 7 unlock items + 8 Trophy = 15 mandatory items against 120 real
+cup-category locations (8 cups x 12 locations each - 3 own tiers + 4 tracks x 3
+placements) - always comfortably capacity-safe, proven, not assumed. Cups' own mandatory
+demand still feeds into `rules.decide_unlock_modes`' capacity accounting for Time
+Trial/Missions (they all draw from the same global `location_count` pool), just as a fixed
+input rather than something the solver chooses among modes for. Verified live: a 4-player
+`Generate.py` run combining `cups_all` (the worst case for cups' own demand) with
+Characters/Karts on, a modest-target combination goal expected to land on individual mode
+across all three categories, a fully-maxed "everything at once" combination, and Time
+Trial alone at max (the thinnest single-category case) all generated together without
+error - `test.TestCupIndividualUnlock` is the direct reachability regression (mirroring
+`test.TestIndividualUnlockWhenCapacityAllows`'s pattern for Time Trial/Missions) proving a
+sample non-bootstrap cup (and its own tracks) is unreachable with zero items, stays
+unreachable after receiving some OTHER cup's own item, and becomes reachable only once its
+OWN specific item is received; `test.TestTimeTrialSharedKeyFallback`/
+`MissionSharedKeyFallback` and the renamed `TestKartsWithThinCategoryNoLongerDeadlocks`
+still cover the shared_key and open fallbacks for Time Trial/Missions specifically (Cups
+never need either). **Superseded by the fifth pass immediately below** - once the Trophy
+item was removed entirely, the shared_key/open fallback machinery this paragraph
+describes turned out to be unnecessary too (see below) and was deleted; kept here only for
+the historical record of how the capacity problem was first solved.
+
+**All fungible "Trophy" items removed entirely - completion is now checked against real
+location completion, not a received item count (2026-08-06, same day, fifth pass)**: per
+direct user direction, correcting a real design flaw: "I do not want any item that counts
+towards the goal. The only thing that counts towards the goal is complete the cup, time
+trial, or the mission." The flaw: `items.CUP_TROPHY_NAME`/`TIME_TRIAL_TROPHY_NAME`/
+`MISSION_TROPHY_NAME` were ordinary shuffled Progression items, so the fill algorithm
+could place any given copy at ANY reachable location - not necessarily the specific
+cup/track/mission it nominally represented - meaning a player could satisfy the goal by
+receiving N Trophy copies from unrelated checks (or another player's world) without
+actually completing that many cups/tracks/missions themselves. All three Trophy items and
+their build_item_table() entries are gone; `rules.py`'s `completion_condition` now checks
+`state.can_reach_location(...)` directly against each active category's required
+locations (their own "- Win"/"- Staff Ghost Beaten"/"- Clear" locations), and
+`client.py`'s `_check_goal_complete` (the real-time trigger that actually calls
+`ClientStatus.CLIENT_GOAL`) was rewritten to read `ctx.checked_locations` directly against
+each category's required win count, reviving the pre-"any N of M" design's own mechanism
+(see this file's git history) rather than counting received items.
+
+Two consequences worth remembering: (1) since `required_cups_in_order`/etc. are always
+the FULL category (never a subset sized to the configured count -
+`choose_goal_required_cups`/`_time_trials`/`_missions` haven't changed), generation-time
+`completion_condition` ends up requiring the ENTIRE category reachable regardless of the
+configured `required_cup_count`/etc - AP's logic-state solver has no way to represent "the
+player will choose to stop after N of their own choosing", so this is a deliberate,
+documented superset of the real requirement; the actual "any N of M" enforcement is purely
+a client.py/real-time concept now. (2) Without a Trophy item competing for room, every
+category's individual-unlock demand dropped to a flat `(M - 1)`, which is ALWAYS less than
+its own `M` real locations - so the elaborate `rules.decide_unlock_modes` capacity solver
+(and `items.TIME_TRIAL_KEY_NAME`/`MISSION_KEY_NAME`, its shared-Key fallback) became
+unnecessary and was deleted entirely; Cups, Time Trial, and Missions all now
+unconditionally use individual unlocking, no fallback of any kind, exactly like
+Characters/Karts always have. Verified live: a 3-player `Generate.py` run (a fully-maxed
+"everything at once" combination, `mission_mode_complete` alone with Characters/Karts on,
+and a small `cups_count=2` seed) generated together without error, and the spoiler log
+confirms zero remaining "Trophy" references anywhere.
+
+**Two more real client.py bugs found and fixed the same day, both from direct live
+playtesting**:
+- Cup check-sending simplified: a Bronze-or-Silver-only cup finish was reported sending
+  ZERO checks (the cumulative Bronze/Silver/Gold design from earlier the same day never
+  got root-caused) - per direct user direction ("just make first place get 3 checks"),
+  `_check_cup_result` now only sends anything on an actual Gold (1st place overall)
+  finish, sending all three cup locations ("- Bronze"/"- Silver"/"- Win") together at that
+  point - Bronze/Silver-only finishes send nothing, sidestepping whatever the original bug
+  was rather than chasing it.
+- Mission win false-positive on start: `_check_mission_result`'s win signal
+  (`RACESTATUS_OFFSET_MISSION_WIN_DELAY_COUNTER` being nonzero) fired immediately on
+  entering some missions, not on completing them - almost certainly leftover heap content
+  at a freshly-allocated RaceStatus's memory (mkds-re's data offsets have otherwise been
+  100% reliable, see this file's own methodology section, so this reads as an
+  uninitialized-memory issue, not a wrong offset). Fixed by requiring an explicit
+  CONFIRMED-ZERO reading for the current race_status_ptr before a nonzero reading is ever
+  trusted as a real win (`mkds_mission_zero_confirmed`, reset alongside
+  `mkds_mission_win_seen` on every new race instance) - not yet re-confirmed live by the
+  user as of this note.
+
+**PopTracker's progress counters, broken by the same-day Trophy removal, fixed and
+delivered** (self-identified, not user-reported): the pack's `progress_cups`/
+`progress_time_trial`/`progress_missions` "X/Y" overlays used to count RECEIVED Trophy
+items (`mkds-poptracker/scripts/autotracking.lua`'s old `trophy_counts` table) - with
+Trophy items removed apworld-side, that would have shipped permanently stuck at "0/0".
+Fixed by generating a new `scripts/progress_categories.lua` mapping every top-tier
+location name/id (cup "- Win", track "- Staff Ghost Beaten", mission "- Clear") to its
+progress category, and switching `autotracking.lua` to count CHECKED locations via
+`Archipelago:AddLocationHandler`/`Archipelago.CheckedLocations` instead of received
+items - mirroring exactly what `worlds/mkds/rules.py`'s `completion_condition` and
+`client.py`'s `_check_goal_complete` now check. Verified: pack regenerated
+(`generate_pack.py`), all JSON parses and every referenced image exists, all `.lua`
+files pass a brace/paren/bracket balance check, and `mkds-poptracker.zip` rebuilt
+(package_version stays `0.12.0` - this is the first delivery of that version, bundling
+both the cup-accessibility fix and this progress-counter fix together, since 0.12.0 was
+never shipped on its own). Not yet live-tested against a real PopTracker install, same
+honesty flag as the rest of this pack.
+
+**PopTracker Time Trial/Missions still showed no "unlocked" state after delivery -
+user-reported the next day, root-caused as an over-correction, fixed 2026-08-07**: the
+0.12.0 delivery above still didn't show missions/time trials as unlocked. The user pointed
+at a specific earlier point in the session ("go look at the code from around 2 am this
+morning") - `git log`/`git show` on the one commit touching `mkds-poptracker`
+(`a5a6767`, "rework PopTracker pack") confirmed that version had a genuine 3-stage
+locked/unlocked/completed progressive-item design for Cups/Tracks/Missions. The
+session's own third redesign pass (this same file, above) had reverted Time Trial/
+Missions to a 2-stage format per a literal reading of "revert to the previous functioning
+code" - but that reverted PAST the working 3-stage version to an even older design that
+never showed "unlocked" at all, over-correcting rather than just fixing the two real Cup
+bugs that prompted it. Fixed by restoring a 3-stage design (locked/unlocked/completed) for
+Time Trial/Missions, reusing the pack's real per-track/mission artwork (grey `img_mods`
+tint for locked, full color for unlocked, the generic checked icon for completed) rather
+than the 2 am version's generic placeholder art. This also fixed a real latent bug: Time
+Trial/Mission unlock items were never looked up by `ITEM_NAME_TO_CODE` at all, so
+receiving one was silently a no-op regardless of display format - see
+`mkds-poptracker/scripts/progressive_item_codes.lua` (new) and `autotracking.lua`'s
+`onItemReceived`/`activate_bootstrap_progressive`.
+
+**`mkds-poptracker/generate_pack.py` was found missing from disk while investigating the
+above** (never committed - `git log -- mkds-poptracker` shows only one historical commit,
+predating most of this session's redesigns; everything since was uncommitted working-tree
+state, and the file was apparently lost partway through an earlier edit this session,
+root cause not identified). Reconstructed from scratch by reverse-engineering the
+still-present, still-correct generated output on disk (`items/items.json`,
+`locations/*.json`, `maps/maps.json`, `scripts/*.lua`) cross-referenced against
+`worlds/mkds`'s own source tables - real MKDS artwork filenames (`CHAR_ICON`/`KART_ICON`/
+`TRACK_ICON`/`MISSION_ICON`/`CUP_ICON`) were extracted directly from the last-known-good
+`items.json` rather than re-guessed. Verified before layering the 3-stage fix on top: every
+regenerated file except `items.json` itself (which was expected to change) came out
+byte-identical (JSON/Lua) or pixel-identical (`cups_grid.png`/`gp_placements_grid.png`,
+diffed via `PIL.ImageChops.difference`) against the pre-reconstruction output.
+`mkds-poptracker.zip` rebuilt and delivered at `package_version` `0.13.0`. Lesson: this
+project's git history discipline (commit real milestones, not just deliver zips) has a
+real gap here - `mkds-poptracker/` has had exactly one commit across dozens of redesign
+passes this session, which is why nothing could be recovered from git when a file went
+missing.
 
 **All 36 real karts are individually unlockable** (`items.KARTS`, wiki-cross-verified
 against mkds-re's real `KartId` enum - see `rom_addresses.KART_ID_TO_NAME`), each usable
@@ -85,16 +279,138 @@ independent per-track flag) - not directly relevant anymore since access itself 
 longer restricted either way (see below); tracks stay individually-named items purely for
 the goal-logic layer (`rules.py`), same pattern as cups.
 
-**Missions are item-gated the same way cups/tracks are** (changed - see "One free unlock
-per section" below; originally missions had no item at all, unconditionally reachable).
-Randomize Mission Mode still only controls whether Mission Mode participates in the AP
-economy at all - slot shuffling (which mission occupies which level position) was
-dropped separately and stays dropped; only *access* changed, not vanilla slot placement.
+**Missions are unconditionally reachable whenever Mission Mode is part of the goal at
+all** (like every category, per the 2026-08-06 redesign above). Randomize Mission Mode
+still only controls whether Mission Mode participates in the AP economy at all - slot
+shuffling (which mission occupies which level position) was dropped separately and stays
+dropped; only *access* changed, not vanilla slot placement.
 
 **`create_regions` only instantiates goal-required locations**, not the full ~198-location
 table - matches Instructions.txt's actual design (non-required content isn't a real AP
 location at all, not just "doesn't need an item"). If this ever changes, remember
 `create_items`'s pool sizing and `rules.py`'s rule-iteration both currently assume it.
+
+**REAL BUG FIXED 2026-08-07: `_is_run_legitimate` was reading the WRONG driver slot's
+character/kart for races where the player isn't grid position 0** - user-reported
+(`is_run_legitimate=False` despite confirmed-received items, then reproduced across
+every cup, not just one). Root cause: `client.py` hardcoded `rom_addresses.
+PLAYER_DRIVER_ID=0` everywhere it needed to know "which `drivers[]`/`racer_entries[]`
+index is the player" - that constant's own comment already flagged the risk ("only
+confirmed live for 2 races, both of which happened to read back 0... if client.py ever
+needs this in a context where it could plausibly differ, read
+`RACECONFIG_OFFSET_PLAYER_DRIVER_ID` live instead"), and this is exactly that case. Fixed
+by adding `_read_player_driver_id` (reads `RaceConfig.player_driver_id` live off the
+already-available `race_config_addr`) and threading its result through every callsite
+that used to trust the hardcoded constant: `_check_race_result`'s own `place_driver_ids`
+lookup (so a wrong slot no longer risks misidentifying which PLACE the player finished
+in, not just which character/kart), `_check_cup_result`, and `_check_time_trial_result`.
+Verified: unit tests (58/58, both dev copy and repackaged `.apworld`) and a relocate-
+and-reload check confirming `world_version` `0.13.0` loads correctly from the zip. NOT
+yet re-confirmed live by the user as of this note - the reasoning is solid (the
+constant's own doc comment predicted this exact failure mode, and the user's symptom
+matches it precisely) but this project's practice is to flag until actually re-tested.
+
+**Mission check-on-start bug: root-caused and fixed 2026-08-07, second attempt** (the
+first attempt - a 3-consecutive-zero-polls guard - also did not hold, per user
+retest). The user's follow-up debug log was the key: `mission win detected: level=255,
+stage=255` (255 is not a valid level/stage - max is 7/9), and the user explicitly
+confirmed these debug lines appeared **while not even in a mission**. Root cause:
+`_check_mission_result` was being called unconditionally every tick regardless of game
+mode (it hangs off the same `race_status_ptr` used for Grand Prix/Time Trial), so
+`RACESTATUS_OFFSET_MISSION_WIN_DELAY_COUNTER` was being read and TRUSTED even during
+non-Mission race types, where that offset means something else (or nothing). Real fix:
+read `cur_mission_level`/`cur_mission_stage` FIRST and only evaluate the win-delay
+counter (and its zero-confirmation bookkeeping) while they're in valid range - i.e. only
+trust this signal while genuinely inside Mission Mode. Dedup state now resets on EVERY
+tick spent outside Mission Mode (not just on a `race_status_ptr` change), so a
+false-positive from outside Mission Mode can no longer leak into a later real attempt.
+Verified: unit tests (58/58, dev copy and repackaged `.apworld`) and a relocate-and-
+reload check. NOT yet re-confirmed live - flagging per this project's established
+practice, especially since the FIRST attempted fix for this same bug also failed live
+testing.
+
+**Character/kart legitimacy bug: the REAL root cause, found 2026-08-07 (the
+`PLAYER_DRIVER_ID` fix above was real but incomplete)** - after that fix shipped, the
+user's next debug log showed `player_driver_id=0` (correctly read live) and confirmed
+the character/kart shown WAS what they were actually driving and that both items WERE
+actually unlocked/received - yet `is_run_legitimate` still returned `False`. Root cause:
+`validate_rom` set `ctx.items_handling = 0b001`, which per Archipelago's own network
+protocol docs (`docs/network protocol.md`) means **"receive items sent from OTHER
+worlds" ONLY** - it does NOT include items placed within the player's OWN MKDS world
+(that requires 0b010 as well). An ordinary Fill placement can put any Character/Kart
+item in the player's own world just as easily as anyone else's, so `ctx.items_received`
+was silently missing every self-found copy - `_is_run_legitimate`'s `received_counts`
+lookup would then read 0 for a genuinely-received item and fail legitimacy. In a
+single-player game specifically, EVERY item is "from your own world," so `0b001` alone
+would receive nothing beyond the free bootstrap entries at all - this is almost
+certainly why it "worked two patches ago" (probably a different test context) and then
+failed broadly once actually played. Fixed: `items_handling = 0b111` (matches the
+"receive everything" pattern already used elsewhere in this codebase, e.g.
+`CommonClient.py`'s own `/received` command). This is the higher-confidence fix of the
+two found today - it's a documented protocol bitmask, not inferred behavior - but still
+flagged unconfirmed pending live retest, same practice as everything else in this file.
+
+**Four more real bugs found and fixed 2026-08-07, same day, from continued live
+playtesting against the two fixes above:**
+
+1. **Cup misidentification - winning Lightning Cup (and separately Banana Cup) both
+   identified as Mushroom Cup.** `TROPHYRESULT_OFFSET_CUP_IDX` (StructTrophyResult's own
+   cup_idx field) had only ever been live-confirmed against Mushroom Cup itself (idx 0) -
+   indistinguishable from "always reads 0", which is exactly what it turned out to be.
+   This also silently broke the `(cup_idx, player_rank)` dedup key `_check_cup_result`
+   uses (two different cups finishing at the same rank looked like the same
+   already-processed pair, so a later cup could be silently SKIPPED, not just
+   misidentified). Fixed by reading cup_idx from `RaceConfig` instead
+   (`RACECONFIG_OFFSET_CUP_IDX`), via the same `race_config_addr` already relied on for
+   character/kart legitimacy at that exact moment - the user's own report confirmed "the
+   car and driver are correct" at ceremony time, direct live evidence that struct's data
+   is still fresh then. `rom_addresses.py`'s `TROPHYRESULT_OFFSET_CUP_IDX` now carries a
+   loud "DO NOT USE" comment; nothing in `client.py` reads it anymore.
+2. **Missions could still send a check immediately on entry** when going straight from
+   one mission into another without leaving Mission Mode, or retrying after a fail.
+   `_check_mission_result`'s dedup only reset on a `race_status_ptr` change - if the game
+   reuses the same allocation across back-to-back missions, a genuinely new mission
+   (different level/stage) wouldn't reset anything. Now keyed on
+   `(race_status_ptr, level, stage)` together. Separately, once `zero_confirmed` became
+   True it stayed true FOREVER for that key - now consumed/invalidated on every nonzero
+   poll, requiring a fresh 3-poll zero streak before trusting the next nonzero again, not
+   just once ever. Explicitly NOT claimed to fully resolve retry-after-fail specifically -
+   two previous attempts at this exact bug each missed something, and without a live
+   probe there's no way to confirm a FAILED attempt doesn't also trip the same counter
+   (which would need a way to distinguish win from lose that hasn't been found yet).
+3. **Completing a mission set on a real track could send that track's Time Trial check
+   too** - confirmed via completing "Level 6 Mission 6" (staged on GCN Yoshi Circuit)
+   also sending "GCN Yoshi Circuit - Staff Ghost Beaten". `_check_time_trial_result` had
+   no way to tell a Mission Mode race-end from a genuine Time Trial finish when both
+   happen to share a real course_id. Fixed with the same in-Mission-Mode gate
+   `_check_mission_result` already uses (cur_mission_level/stage in valid range -> bail).
+   This also plausibly explains a separately-reported symptom (Mission 4-9 "didn't send a
+   check on completion but PopTracker showed it complete") if that mission's own
+   win-delay false-positive (bug 2 above) fired early while this un-gated path was ALSO
+   incidentally satisfied around the same time - not confirmed, but no longer possible
+   either way now that both paths are gated.
+4. **Goal fired immediately after another player's own goal completion, without this
+   player having played the cup they still needed.** `_check_goal_complete` used to
+   trust `ctx.checked_locations` (server-synced, supposed to be scoped to only this
+   player's own checked locations per Archipelago's protocol) directly on every poll, and
+   had NO debug logging at all - impossible to diagnose further from a single report.
+   Added debug logging, and switched to a defense-in-depth design: goal completion now
+   counts against `ctx.mkds_goal_confirmed_locations`, a set seeded ONCE per connection
+   (reseeded fresh on every `validate_rom`, i.e. every reconnect) from whatever
+   `ctx.checked_locations` already contained at that point, then grown ONLY by this
+   client's own confirmed sends (`_record_own_check`, called from every location the
+   game's own detection logic sends) for the rest of that connection. A location that
+   becomes "checked" server-side mid-session through anything OTHER than this client's
+   own live detection can no longer count toward the goal until a fresh reconnect
+   re-establishes the baseline. The underlying mechanism that let this happen was not
+   itself identified (no prior debug log existed for this path) - this satisfies the
+   user's literal request as a safety net regardless of the exact original cause.
+
+Verified (all four): unit tests (58/58, dev copy and repackaged `.apworld`), a real
+2-player `Generate.py` sweep, and a relocate-and-reload check confirming `world_version`
+`0.15.0` loads correctly from the zip. None of these four have been re-confirmed live by
+the user as of this note - flagging honestly, especially given bug 2's fix is explicitly
+a partial mitigation, not a proven resolution.
 
 ## Check-validity enforcement (replaced the ASM-patch approach)
 
@@ -135,7 +451,19 @@ recomputes it, just reads the list. General lesson: when a new cross-cutting req
 gets layered onto existing per-category rules, check whether it breaks the "something is
 always reachable with nothing" invariant before assuming the layering is safe.
 
-### One free unlock per section (extended the position-0-is-free pattern everywhere)
+### One free unlock per section (superseded 2026-08-06 by full category accessibility)
+
+The sequential per-item unlock scheme described in this section (and
+`kart_bootstrap_exempt_locations`/the bootstrap-deadlock exemption right above it) no
+longer exists in `rules.py` - see "Full category accessibility + fungible Trophy items"
+and "Bootstrap + Key gating layered back on top" above for what replaced it (twice).
+Kept below for the historical bug-fix reasoning (the bootstrap deadlock, the kart
+fill-deadlock analysis) since both are still instructive, even though the specific
+mechanism they were fixing has since been replaced with something that can't hit either
+failure mode at all - the CURRENT bootstrap+Key design (see above) gates on a single
+category-wide Key rather than a chain of per-item sequential unlocks, so there's no
+"two mandatory items competing for the same bootstrap slot" shape to deadlock on, only a
+flat capacity check (`*_key_active`) already handled explicitly.
 
 Cups/tracks already had "position 0 is free, every other position needs its own item."
 Characters and missions didn't - **all 8 starter characters were simultaneously usable

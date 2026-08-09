@@ -446,7 +446,14 @@ COURSE_ID_ORDERED_TABLE_ADDRESS = 0x02154128  # g_InternalCourseIdOrderedTable[3
 GLOBAL_TROPHY_RESULT_POINTER_ADDRESS = 0x0217B200
 
 # StructTrophyResult (0x124 bytes, mkds-re) - only the first two fields are needed.
-TROPHYRESULT_OFFSET_CUP_IDX = 0x0             # u16 - matches CupId enum / locations.CUPS order (0=Mushroom..7=Lightning), same numbering already confirmed live for RaceConfig.cup_idx. Confirmed live: read 0 for a real Mushroom Cup completion.
+TROPHYRESULT_OFFSET_CUP_IDX = 0x0             # u16 - DO NOT USE to identify which cup - see below. Left defined for reference only; nothing in client.py reads this anymore.
+# TROPHYRESULT_OFFSET_CUP_IDX CONFIRMED UNRELIABLE 2026-08-07: the only live confirmation
+# this ever got was against Mushroom Cup itself (idx 0) - indistinguishable from "always
+# reads 0". A real user playtest then won Lightning Cup (idx should be 7) and separately
+# Banana Cup (idx should be 5); both read back cup_idx=0 via this field, proving it does
+# NOT track the actual completed cup. client.py's _check_cup_result now reads cup_idx
+# from RaceConfig (RACECONFIG_OFFSET_CUP_IDX below) instead, via the same race_config_addr
+# already relied on there for character/kart legitimacy at that exact moment.
 TROPHYRESULT_OFFSET_PLAYER_GLOBAL_RANK = 0x2  # u16 - overall GP standing, 0-7 (0 = 1st). Confirmed live: read 0 for a real 1st-place finish.
 
 # g_RacerPositionToCupResultTable[8] (EU 0x02154064): converts player_global_rank (0-7)
